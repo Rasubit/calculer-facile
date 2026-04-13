@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Calculateur TVA — HT ↔ TTC — Calculer-Facile</title>
+  <meta name="description" content="Calculez instantanément un prix HT en TTC ou un prix TTC en HT. TVA à 20%, 10% ou 5,5%.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --gray:  #8a8a8a;
+      --light: #f2f2f2;
+      --blue:  #1a4a7a;
+      --blue-bg: #eef3fa;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--white);
+      color: var(--black);
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 28px;
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      text-decoration: none;
+      color: var(--black);
+    }
+
+    .logo-dot {
+      width: 18px; height: 18px;
+      background: var(--black);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .logo-dot svg { width: 11px; height: 11px; }
+
+    .logo-name {
+      font-size: 13.5px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    nav a {
+      font-size: 13px;
+      color: var(--black);
+      text-decoration: none;
+      padding: 6px 13px;
+      border-radius: 7px;
+      transition: background 0.12s;
+    }
+
+    nav a:hover { background: var(--light); }
+    nav a.nav-active { font-weight: 500; }
+
+    .btn-pill {
+      background: var(--black);
+      color: var(--white) !important;
+      border-radius: 100px !important;
+      padding: 8px 18px !important;
+      font-weight: 500 !important;
+      margin-left: 6px;
+    }
+
+    .btn-pill:hover { background: #282828 !important; }
+
+    main {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 20px 80px;
+    }
+
+    .hero-eyebrow {
+      font-size: 13px;
+      color: var(--gray);
+      letter-spacing: 0.01em;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: clamp(54px, 9vw, 104px);
+      font-weight: 300;
+      letter-spacing: -0.035em;
+      line-height: 1.0;
+      text-align: center;
+      color: var(--black);
+      margin-bottom: 52px;
+      user-select: none;
+    }
+
+    /* FLOATING CARD */
+    .float-wrap {
+      position: relative;
+      width: 420px;
+      max-width: calc(100vw - 40px);
+    }
+
+    .float-card {
+      background: var(--white);
+      border-radius: 26px;
+      border: 1px solid rgba(0,0,0,0.08);
+      overflow: hidden;
+      box-shadow:
+        0 1px 1px rgba(0,0,0,0.03),
+        0 4px 8px rgba(0,0,0,0.05),
+        0 12px 24px rgba(0,0,0,0.07),
+        0 32px 56px rgba(0,0,0,0.09),
+        0 64px 96px rgba(0,0,0,0.07);
+      animation: levitate 7s ease-in-out infinite;
+      transform-origin: center bottom;
+    }
+
+    @keyframes levitate {
+      0%   { transform: translateY(0px) rotateX(0deg); }
+      50%  { transform: translateY(-12px) rotateX(1deg); }
+      100% { transform: translateY(0px) rotateX(0deg); }
+    }
+
+    .card-chrome {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 14px 18px 10px;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .chrome-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .d-red   { background: #ff5f57; }
+    .d-amber { background: #ffbd2e; }
+    .d-green { background: #28c840; }
+
+    .chrome-label {
+      font-size: 11px;
+      color: #ccc;
+      margin-left: auto;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .card-body { padding: 20px 20px 20px; }
+
+    /* Taux selector */
+    .taux-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      justify-content: center;
+    }
+
+    .taux-btn {
+      flex: 1;
+      background: #f7f7f7;
+      border: 1.5px solid #ececec;
+      border-radius: 10px;
+      padding: 9px 6px;
+      font-size: 13px;
+      font-weight: 500;
+      font-family: 'Inter', sans-serif;
+      color: var(--gray);
+      cursor: pointer;
+      transition: all 0.14s;
+      text-align: center;
+    }
+
+    .taux-btn:hover { background: #f0f0f0; color: var(--black); }
+
+    .taux-btn.active {
+      background: var(--black);
+      border-color: var(--black);
+      color: var(--white);
+    }
+
+    .taux-label {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #c0c0c0;
+      text-align: center;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    /* Direction toggle */
+    .dir-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .dir-btn {
+      flex: 1;
+      background: #f7f7f7;
+      border: 1.5px solid #ececec;
+      border-radius: 10px;
+      padding: 9px 6px;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: 'Inter', sans-serif;
+      color: var(--gray);
+      cursor: pointer;
+      transition: all 0.14s;
+      text-align: center;
+    }
+
+    .dir-btn.active {
+      background: var(--black);
+      border-color: var(--black);
+      color: var(--white);
+    }
+
+    /* Input */
+    .field { display: flex; flex-direction: column; gap: 5px; align-items: center; margin-bottom: 14px; }
+
+    .field-lbl {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #c0c0c0;
+      text-align: center;
+    }
+
+    .field input {
+      width: 100%;
+      background: #f7f7f7;
+      border: 1.5px solid #ececec;
+      border-radius: 13px;
+      padding: 13px 14px;
+      font-size: 28px;
+      font-weight: 300;
+      font-family: 'Inter', sans-serif;
+      color: var(--black);
+      outline: none;
+      text-align: center;
+      transition: border-color 0.14s, background 0.14s;
+      -moz-appearance: textfield;
+    }
+
+    .field input::-webkit-outer-spin-button,
+    .field input::-webkit-inner-spin-button { -webkit-appearance: none; }
+    .field input::placeholder { color: #d0d0d0; }
+    .field input:focus { border-color: var(--black); background: #fff; }
+
+    /* Result */
+    .result-area {
+      background: #f7f7f7;
+      border-radius: 16px;
+      padding: 16px 18px;
+      margin-bottom: 14px;
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.25s;
+      text-align: center;
+    }
+
+    .result-area.has-result { background: var(--blue-bg); }
+
+    .res-idle {
+      font-size: 12px;
+      color: #ccc;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .res-content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .res-main {
+      font-size: 42px;
+      font-weight: 300;
+      letter-spacing: -0.04em;
+      color: var(--blue);
+      line-height: 1;
+    }
+
+    .res-sub-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .res-pill {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 100px;
+      background: rgba(26,74,122,0.12); color: var(--blue);
+    }
+
+    .res-secondary {
+      font-size: 11px; color: #bbb;
+    }
+
+    .res-formula {
+      font-size: 11px;
+      font-style: italic;
+      color: #c8c8c8;
+      text-align: center;
+      margin-top: 2px;
+    }
+
+    /* CTA */
+    .calc-btn {
+      width: 100%;
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      border-radius: 13px;
+      padding: 15px;
+      font-size: 13.5px;
+      font-weight: 500;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: background 0.12s, transform 0.1s;
+    }
+
+    .calc-btn:hover  { background: #1e1e1e; }
+    .calc-btn:active { transform: scale(0.99); }
+
+    .ground-shadow {
+      width: 60%;
+      height: 20px;
+      margin: 0 auto;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: gshadow 7s ease-in-out infinite;
+    }
+
+    @keyframes gshadow {
+      0%   { transform: scaleX(1);    opacity: 0.7; }
+      50%  { transform: scaleX(0.82); opacity: 0.4; }
+      100% { transform: scaleX(1);    opacity: 0.7; }
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      pointer-events: none;
+    }
+
+    footer span {
+      font-size: 11.5px;
+      color: #d0d0d0;
+    }
+
+    @media (max-width: 600px) {
+      nav { display: none; }
+      .hero-title { font-size: 46px; margin-bottom: 36px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="/">
+    <div class="logo-dot">
+      <svg viewBox="0 0 11 11" fill="none">
+        <rect x="1"   y="1"   width="3.5" height="2.2" rx="0.6" fill="white"/>
+        <rect x="6.5" y="1"   width="3.5" height="2.2" rx="0.6" fill="white"/>
+        <rect x="1"   y="4.4" width="3.5" height="1.6" rx="0.6" fill="white"/>
+        <rect x="6.5" y="4.4" width="3.5" height="1.6" rx="0.6" fill="white"/>
+        <rect x="1"   y="7.2" width="3.5" height="1.6" rx="0.6" fill="white"/>
+        <rect x="6.5" y="7.2" width="3.5" height="1.6" rx="0.6" fill="white"/>
+      </svg>
+    </div>
+    <span class="logo-name">Calculer-Facile</span>
+  </a>
+
+  <nav>
+    <a href="/fr/">Évolution</a>
+    <a href="/fr/tva/" class="nav-active">TVA</a>
+    <a href="/fr/remise/">Remise</a>
+    <a href="/fr/imc/">IMC</a>
+    <a href="/fr/credit/">Crédit</a>
+    <a href="/fr/carburant/" class="btn-pill">Carburant</a>
+  </nav>
+</header>
+
+<main>
+  <p class="hero-eyebrow">Outil gratuit &mdash; résultat immédiat</p>
+  <h1 class="hero-title">Calcul TVA</h1>
+
+  <div class="float-wrap">
+    <div class="float-card">
+
+      <div class="card-chrome">
+        <div class="chrome-dot d-red"></div>
+        <div class="chrome-dot d-amber"></div>
+        <div class="chrome-dot d-green"></div>
+        <span class="chrome-label">calculer-facile.fr</span>
+      </div>
+
+      <div class="card-body">
+
+        <!-- Taux TVA -->
+        <span class="taux-label">Taux de TVA</span>
+        <div class="taux-row">
+          <button class="taux-btn active" data-taux="20">20 %</button>
+          <button class="taux-btn" data-taux="10">10 %</button>
+          <button class="taux-btn" data-taux="5.5">5,5 %</button>
+          <button class="taux-btn" data-taux="2.1">2,1 %</button>
+        </div>
+
+        <!-- Direction -->
+        <div class="dir-row">
+          <button class="dir-btn active" id="dir-ht">HT → TTC</button>
+          <button class="dir-btn" id="dir-ttc">TTC → HT</button>
+        </div>
+
+        <!-- Input -->
+        <div class="field">
+          <span class="field-lbl" id="input-label">Prix HT (€)</span>
+          <input id="prix" type="number" placeholder="100,00" inputmode="decimal" autofocus />
+        </div>
+
+        <!-- Result -->
+        <div class="result-area" id="res-area">
+          <p class="res-idle">Entrez un prix et appuyez sur Calculer.</p>
+        </div>
+
+        <button class="calc-btn" id="calc-btn">Calculer la TVA</button>
+
+      </div>
+    </div>
+
+    <div class="ground-shadow"></div>
+  </div>
+</main>
+
+<footer>
+  <span>© 2025 calculer-facile.fr</span>
+</footer>
+
+<script>
+  const prixEl   = document.getElementById('prix');
+  const btn      = document.getElementById('calc-btn');
+  const area     = document.getElementById('res-area');
+  const inpLabel = document.getElementById('input-label');
+  const dirHt    = document.getElementById('dir-ht');
+  const dirTtc   = document.getElementById('dir-ttc');
+
+  let taux = 20;
+  let direction = 'ht'; // 'ht' = HT→TTC, 'ttc' = TTC→HT
+
+  // Taux buttons
+  document.querySelectorAll('.taux-btn').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('.taux-btn').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      taux = parseFloat(b.dataset.taux);
+      reset();
+    });
+  });
+
+  // Direction buttons
+  dirHt.addEventListener('click', () => {
+    direction = 'ht';
+    dirHt.classList.add('active');
+    dirTtc.classList.remove('active');
+    inpLabel.textContent = 'Prix HT (€)';
+    prixEl.placeholder = '100,00';
+    reset();
+  });
+
+  dirTtc.addEventListener('click', () => {
+    direction = 'ttc';
+    dirTtc.classList.add('active');
+    dirHt.classList.remove('active');
+    inpLabel.textContent = 'Prix TTC (€)';
+    prixEl.placeholder = '120,00';
+    reset();
+  });
+
+  function reset() {
+    prixEl.value = '';
+    area.className = 'result-area';
+    area.innerHTML = '<p class="res-idle">Entrez un prix et appuyez sur Calculer.</p>';
+  }
+
+  function fmt(n) {
+    return n.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  function calc() {
+    const val = parseFloat(prixEl.value);
+    if (isNaN(val) || val < 0) {
+      area.className = 'result-area';
+      area.innerHTML = '<p class="res-idle">Entrez un prix valide pour lancer le calcul.</p>';
+      return;
+    }
+
+    let ht, ttc, montantTva;
+
+    if (direction === 'ht') {
+      ht         = val;
+      montantTva = val * taux / 100;
+      ttc        = val + montantTva;
+    } else {
+      ttc        = val;
+      ht         = val / (1 + taux / 100);
+      montantTva = ttc - ht;
+    }
+
+    const mainVal   = direction === 'ht' ? fmt(ttc)        : fmt(ht);
+    const mainLabel = direction === 'ht' ? 'Prix TTC'      : 'Prix HT';
+    const secLabel  = direction === 'ht' ? `HT : ${fmt(ht)} €` : `TTC : ${fmt(ttc)} €`;
+    const formula   = direction === 'ht'
+      ? `${fmt(ht)} € × (1 + ${taux} ÷ 100) = ${fmt(ttc)} €`
+      : `${fmt(ttc)} € ÷ (1 + ${taux} ÷ 100) = ${fmt(ht)} €`;
+
+    area.className = 'result-area has-result';
+    area.innerHTML = `
+      <div class="res-content">
+        <span class="res-main">${mainVal} €</span>
+        <div class="res-sub-row">
+          <span class="res-pill">${mainLabel} · TVA ${taux}%</span>
+          <span class="res-secondary">TVA : ${fmt(montantTva)} €</span>
+        </div>
+        <p class="res-secondary" style="margin-top:2px;">${secLabel}</p>
+        <p class="res-formula">${formula}</p>
+      </div>`;
+  }
+
+  btn.addEventListener('click', calc);
+  prixEl.addEventListener('keydown', e => { if (e.key === 'Enter') calc(); });
+</script>
+
+</body>
+</html>
