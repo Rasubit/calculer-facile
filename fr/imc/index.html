@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Calculateur IMC — Indice de Masse Corporelle — Calculer-Facile</title>
+  <meta name="description" content="Calculez votre IMC instantanément. Indice de masse corporelle selon votre poids et votre taille.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --gray:  #8a8a8a;
+      --light: #f2f2f2;
+      --acc:   #2a4a6a;
+      --acc-bg:#eaf0f7;
+      --c-mince:    #1a6a7a;
+      --c-normal:   #1a7a4a;
+      --c-surpoids: #8a6a1a;
+      --c-obese:    #7a2a1a;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--white);
+      color: var(--black);
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 28px;
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      text-decoration: none;
+      color: var(--black);
+    }
+
+    .logo-dot {
+      width: 18px; height: 18px;
+      background: var(--black);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .logo-dot svg { width: 11px; height: 11px; }
+
+    .logo-name {
+      font-size: 13.5px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    nav a {
+      font-size: 13px;
+      color: var(--black);
+      text-decoration: none;
+      padding: 6px 13px;
+      border-radius: 7px;
+      transition: background 0.12s;
+    }
+
+    nav a:hover { background: var(--light); }
+    nav a.nav-active { font-weight: 500; }
+
+    .btn-pill {
+      background: var(--black);
+      color: var(--white) !important;
+      border-radius: 100px !important;
+      padding: 8px 18px !important;
+      font-weight: 500 !important;
+      margin-left: 6px;
+    }
+
+    .btn-pill:hover { background: #282828 !important; }
+
+    main {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 20px 80px;
+    }
+
+    .hero-eyebrow {
+      font-size: 13px;
+      color: var(--gray);
+      letter-spacing: 0.01em;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: clamp(54px, 9vw, 104px);
+      font-weight: 300;
+      letter-spacing: -0.035em;
+      line-height: 1.0;
+      text-align: center;
+      color: var(--black);
+      margin-bottom: 52px;
+      user-select: none;
+    }
+
+    .float-wrap {
+      position: relative;
+      width: 420px;
+      max-width: calc(100vw - 40px);
+    }
+
+    .float-card {
+      background: var(--white);
+      border-radius: 26px;
+      border: 1px solid rgba(0,0,0,0.08);
+      overflow: hidden;
+      box-shadow:
+        0 1px 1px rgba(0,0,0,0.03),
+        0 4px 8px rgba(0,0,0,0.05),
+        0 12px 24px rgba(0,0,0,0.07),
+        0 32px 56px rgba(0,0,0,0.09),
+        0 64px 96px rgba(0,0,0,0.07);
+      animation: levitate 7s ease-in-out infinite;
+      transform-origin: center bottom;
+    }
+
+    @keyframes levitate {
+      0%   { transform: translateY(0px) rotateX(0deg); }
+      50%  { transform: translateY(-12px) rotateX(1deg); }
+      100% { transform: translateY(0px) rotateX(0deg); }
+    }
+
+    .card-chrome {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 14px 18px 10px;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .chrome-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .d-red   { background: #ff5f57; }
+    .d-amber { background: #ffbd2e; }
+    .d-green { background: #28c840; }
+
+    .chrome-label {
+      font-size: 11px;
+      color: #ccc;
+      margin-left: auto;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .card-body { padding: 20px; }
+
+    /* Unité toggle */
+    .unit-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .unit-btn {
+      flex: 1;
+      background: #f7f7f7;
+      border: 1.5px solid #ececec;
+      border-radius: 10px;
+      padding: 9px 6px;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: 'Inter', sans-serif;
+      color: var(--gray);
+      cursor: pointer;
+      transition: all 0.14s;
+      text-align: center;
+    }
+
+    .unit-btn.active {
+      background: var(--black);
+      border-color: var(--black);
+      color: var(--white);
+    }
+
+    /* Inputs */
+    .inputs-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .field { display: flex; flex-direction: column; gap: 5px; align-items: center; }
+
+    .field-lbl {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #c0c0c0;
+      text-align: center;
+    }
+
+    .input-with-unit {
+      position: relative;
+      width: 100%;
+    }
+
+    .field input {
+      width: 100%;
+      background: #f7f7f7;
+      border: 1.5px solid #ececec;
+      border-radius: 13px;
+      padding: 13px 36px 13px 14px;
+      font-size: 24px;
+      font-weight: 300;
+      font-family: 'Inter', sans-serif;
+      color: var(--black);
+      outline: none;
+      text-align: center;
+      transition: border-color 0.14s, background 0.14s;
+      -moz-appearance: textfield;
+    }
+
+    .field input::-webkit-outer-spin-button,
+    .field input::-webkit-inner-spin-button { -webkit-appearance: none; }
+    .field input::placeholder { color: #d0d0d0; }
+    .field input:focus { border-color: var(--black); background: #fff; }
+
+    .unit-mark {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 12px;
+      font-weight: 500;
+      color: #bbb;
+      pointer-events: none;
+    }
+
+    /* Result */
+    .result-area {
+      background: #f7f7f7;
+      border-radius: 16px;
+      padding: 16px 18px;
+      margin-bottom: 14px;
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.25s;
+      text-align: center;
+    }
+
+    .result-area.has-result { background: var(--acc-bg); }
+
+    .res-idle {
+      font-size: 12px;
+      color: #ccc;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .res-content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .res-main {
+      font-size: 52px;
+      font-weight: 300;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .res-pill {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      padding: 3px 12px; border-radius: 100px;
+    }
+
+    .res-formula {
+      font-size: 11px;
+      font-style: italic;
+      color: #c8c8c8;
+      text-align: center;
+      margin-top: 2px;
+    }
+
+    /* IMC scale bar */
+    .imc-scale {
+      width: 100%;
+      height: 6px;
+      border-radius: 100px;
+      background: linear-gradient(to right,
+        #a8d8e0 0%, #a8d8e0 18.5%,
+        #a8d4b8 18.5%, #a8d4b8 25%,
+        #e8d8a0 25%, #e8d8a0 30%,
+        #e8c0a0 30%, #e8c0a0 100%
+      );
+      position: relative;
+      margin-top: 4px;
+    }
+
+    .imc-cursor {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--black);
+      border: 2px solid white;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+      transition: left 0.4s cubic-bezier(.22,.68,0,1.2);
+    }
+
+    /* CTA */
+    .calc-btn {
+      width: 100%;
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      border-radius: 13px;
+      padding: 15px;
+      font-size: 13.5px;
+      font-weight: 500;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: background 0.12s, transform 0.1s;
+    }
+
+    .calc-btn:hover  { background: #1e1e1e; }
+    .calc-btn:active { transform: scale(0.99); }
+
+    .ground-shadow {
+      width: 60%;
+      height: 20px;
+      margin: 0 auto;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: gshadow 7s ease-in-out infinite;
+    }
+
+    @keyframes gshadow {
+      0%   { transform: scaleX(1);    opacity: 0.7; }
+      50%  { transform: scaleX(0.82); opacity: 0.4; }
+      100% { transform: scaleX(1);    opacity: 0.7; }
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      pointer-events: none;
+    }
+
+    footer span { font-size: 11.5px; color: #d0d0d0; }
+
+    @media (max-width: 600px) {
+      nav { display: none; }
+      .hero-title { font-size: 46px; margin-bottom: 36px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="/">
+    <div class="logo-dot">
+      <svg viewBox="0 0 11 11" fill="none">
+        <rect x="1"   y="1"   width="3.5" height="2.2" rx="0.6" fill="white"/>
+        <rect x="6.5" y="1"   width="3.5" height="2.2" rx="0.6" fill="white"/>
+        <rect x="1"   y="4.4" width="3.5" height="1.6" rx="0.6" fill="white"/>
+        <rect x="6.5" y="4.4" width="3.5" height="1.6" rx="0.6" fill="white"/>
+        <rect x="1"   y="7.2" width="3.5" height="1.6" rx="0.6" fill="white"/>
+        <rect x="6.5" y="7.2" width="3.5" height="1.6" rx="0.6" fill="white"/>
+      </svg>
+    </div>
+    <span class="logo-name">Calculer-Facile</span>
+  </a>
+
+  <nav>
+    <a href="/fr/">Évolution</a>
+    <a href="/fr/tva/">TVA</a>
+    <a href="/fr/remise/">Remise</a>
+    <a href="/fr/imc/" class="nav-active">IMC</a>
+    <a href="/fr/credit/">Crédit</a>
+    <a href="/fr/carburant/" class="btn-pill">Carburant</a>
+  </nav>
+</header>
+
+<main>
+  <p class="hero-eyebrow">Outil gratuit &mdash; résultat immédiat</p>
+  <h1 class="hero-title">Calcul IMC</h1>
+
+  <div class="float-wrap">
+    <div class="float-card">
+
+      <div class="card-chrome">
+        <div class="chrome-dot d-red"></div>
+        <div class="chrome-dot d-amber"></div>
+        <div class="chrome-dot d-green"></div>
+        <span class="chrome-label">calculer-facile.fr</span>
+      </div>
+
+      <div class="card-body">
+
+        <!-- Unités -->
+        <div class="unit-row">
+          <button class="unit-btn active" id="unit-metric">kg / cm</button>
+          <button class="unit-btn" id="unit-imperial">lbs / ft</button>
+        </div>
+
+        <!-- Inputs -->
+        <div class="inputs-row">
+          <div class="field">
+            <span class="field-lbl">Poids</span>
+            <div class="input-with-unit">
+              <input id="poids" type="number" placeholder="70" inputmode="decimal" autofocus />
+              <span class="unit-mark" id="unit-poids">kg</span>
+            </div>
+          </div>
+          <div class="field">
+            <span class="field-lbl">Taille</span>
+            <div class="input-with-unit">
+              <input id="taille" type="number" placeholder="175" inputmode="decimal" />
+              <span class="unit-mark" id="unit-taille">cm</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Result -->
+        <div class="result-area" id="res-area">
+          <p class="res-idle">Entrez votre poids et votre taille pour calculer.</p>
+        </div>
+
+        <button class="calc-btn" id="calc-btn">Calculer mon IMC</button>
+
+      </div>
+    </div>
+
+    <div class="ground-shadow"></div>
+  </div>
+</main>
+
+<footer>
+  <span>© 2025 calculer-facile.fr</span>
+</footer>
+
+<script>
+  const poidsEl  = document.getElementById('poids');
+  const tailleEl = document.getElementById('taille');
+  const btn      = document.getElementById('calc-btn');
+  const area     = document.getElementById('res-area');
+  const unitMetric   = document.getElementById('unit-metric');
+  const unitImperial = document.getElementById('unit-imperial');
+  const unitPoids    = document.getElementById('unit-poids');
+  const unitTaille   = document.getElementById('unit-taille');
+
+  let isMetric = true;
+
+  unitMetric.addEventListener('click', () => {
+    isMetric = true;
+    unitMetric.classList.add('active');
+    unitImperial.classList.remove('active');
+    unitPoids.textContent  = 'kg';
+    unitTaille.textContent = 'cm';
+    poidsEl.placeholder  = '70';
+    tailleEl.placeholder = '175';
+    reset();
+  });
+
+  unitImperial.addEventListener('click', () => {
+    isMetric = false;
+    unitImperial.classList.add('active');
+    unitMetric.classList.remove('active');
+    unitPoids.textContent  = 'lbs';
+    unitTaille.textContent = 'ft';
+    poidsEl.placeholder  = '154';
+    tailleEl.placeholder = '5.9';
+    reset();
+  });
+
+  function reset() {
+    poidsEl.value = '';
+    tailleEl.value = '';
+    area.className = 'result-area';
+    area.innerHTML = '<p class="res-idle">Entrez votre poids et votre taille pour calculer.</p>';
+  }
+
+  function getCategory(imc) {
+    if (imc < 18.5) return { label: 'Insuffisance pondérale', color: '#1a6a7a', bg: 'rgba(26,106,122,0.1)', pos: Math.min(imc / 18.5 * 18, 16) };
+    if (imc < 25)   return { label: 'Poids normal',           color: '#1a7a4a', bg: 'rgba(26,122,74,0.1)',  pos: 18.5 + (imc - 18.5) / (25 - 18.5) * 6.5 };
+    if (imc < 30)   return { label: 'Surpoids',               color: '#8a6a1a', bg: 'rgba(138,106,26,0.1)', pos: 25 + (imc - 25) / 5 * 5 };
+    return           { label: 'Obésité',                      color: '#7a2a1a', bg: 'rgba(122,42,26,0.1)',  pos: Math.min(30 + (imc - 30) / 10 * 30, 95) };
+  }
+
+  function calc() {
+    let poids  = parseFloat(poidsEl.value);
+    let taille = parseFloat(tailleEl.value);
+
+    if (isNaN(poids) || isNaN(taille) || poids <= 0 || taille <= 0) {
+      area.className = 'result-area';
+      area.innerHTML = '<p class="res-idle">Entrez des valeurs valides pour calculer.</p>';
+      return;
+    }
+
+    // Conversion imperial → metric
+    if (!isMetric) {
+      poids  = poids * 0.453592;        // lbs → kg
+      taille = taille * 30.48;          // ft → cm
+    }
+
+    const tailleM = taille / 100;
+    const imc = poids / (tailleM * tailleM);
+    const imcStr = imc.toLocaleString('fr-FR', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    const cat = getCategory(imc);
+
+    const poidsStr  = isMetric ? `${poids} kg`    : `${poidsEl.value} lbs`;
+    const tailleStr = isMetric ? `${taille} cm`   : `${tailleEl.value} ft`;
+    const formula   = `${poids.toFixed(1)} ÷ (${tailleM.toFixed(2)})² = ${imcStr}`;
+
+    area.className = 'result-area has-result';
+    area.innerHTML = `
+      <div class="res-content">
+        <span class="res-main" style="color:${cat.color};">${imcStr}</span>
+        <span class="res-pill" style="background:${cat.bg};color:${cat.color};">${cat.label}</span>
+        <div class="imc-scale">
+          <div class="imc-cursor" style="left:${cat.pos}%;"></div>
+        </div>
+        <p class="res-formula" style="margin-top:8px;">${formula}</p>
+      </div>`;
+  }
+
+  btn.addEventListener('click', calc);
+  [poidsEl, tailleEl].forEach(el => el.addEventListener('keydown', e => {
+    if (e.key === 'Enter') calc();
+  }));
+</script>
+
+</body>
+</html>
