@@ -66,7 +66,16 @@
     }
 
     nav a:hover { background: var(--light); }
-    nav a.nav-active { font-weight: 500; }
+    nav a.nav-active {
+      background: var(--black);
+      color: var(--white);
+      border-radius: 100px;
+      padding: 8px 18px;
+      font-weight: 500;
+    }
+
+    nav a.nav-active:hover { background: #282828; }
+    
 
     .btn-pill {
       background: var(--black); color: var(--white) !important;
@@ -284,12 +293,12 @@
   </a>
 
   <nav>
-    <a href="/fr/">Évolution</a>
-    <a href="/fr/tva/">TVA</a>
-    <a href="/fr/remise/">Remise</a>
-    <a href="/fr/imc/">IMC</a>
+    <a href="/fr/" >Évolution</a>
+    <a href="/fr/tva/" >TVA</a>
+    <a href="/fr/remise/" >Remise</a>
+    <a href="/fr/imc/" >IMC</a>
     <a href="/fr/credit/" class="nav-active">Crédit</a>
-    <a href="/fr/carburant/" class="btn-pill">Carburant</a>
+    <a href="/fr/carburant/" >Carburant</a>
   </nav>
 </header>
 
