@@ -2,445 +2,126 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>Calculateur TVA — HT ↔ TTC — Calculer-Facile</title>
-  <meta name="description" content="Calculez instantanément un prix HT en TTC ou un prix TTC en HT. TVA à 20%, 10% ou 5,5%.">
+  <title>Calculer la TVA en Ligne — Prix HT en TTC gratuit | Calculer-Facile</title>
+  <meta name="description" content="Convertissez instantanément un prix HT en TTC ou TTC en HT. TVA à 20%, 10%, 5,5% et 2,1%. Outil gratuit, sans inscription, résultat immédiat.">
+  <meta name="keywords" content="calculer TVA, calcul TVA 20%, prix HT en TTC, convertir HT TTC, TVA en ligne, calculateur TVA gratuit, montant TVA">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Calculer-Facile">
+  <link rel="canonical" href="https://calculer-facile.fr/fr/tva/">
+  <link rel="alternate" hreflang="fr" href="https://calculer-facile.fr/fr/tva/">
+  <link rel="alternate" hreflang="en" href="https://calculer-facile.fr/en/vat/">
+  <link rel="alternate" hreflang="x-default" href="https://calculer-facile.fr/fr/tva/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Calculer la TVA en Ligne — HT ↔ TTC | Calculer-Facile">
+  <meta property="og:description" content="Convertissez HT en TTC ou TTC en HT en un clic. TVA 20%, 10%, 5,5%. Gratuit.">
+  <meta property="og:url" content="https://calculer-facile.fr/fr/tva/">
+  <meta property="og:site_name" content="Calculer-Facile">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Calculer la TVA — HT ↔ TTC | Calculer-Facile">
+  <meta name="twitter:description" content="Convertissez HT en TTC ou TTC en HT. TVA 20%, 10%, 5,5%. Gratuit.">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Calculateur TVA","url":"https://calculer-facile.fr/fr/tva/","description":"Convertit un prix HT en TTC ou TTC en HT selon le taux de TVA choisi (20%, 10%, 5,5%, 2,1%).","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","inLanguage":"fr","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"publisher":{"@type":"Organization","name":"Calculer-Facile","url":"https://calculer-facile.fr"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Comment calculer la TVA à 20% ?","acceptedAnswer":{"@type":"Answer","text":"Pour calculer la TVA à 20% : multipliez le prix HT par 0,20. Exemple : 100 € HT × 0,20 = 20 € de TVA. Le prix TTC est donc 120 €. Pour passer de TTC à HT : divisez par 1,20."}},{"@type":"Question","name":"Comment passer d'un prix HT à TTC ?","acceptedAnswer":{"@type":"Answer","text":"Multipliez le prix HT par (1 + taux TVA). Avec une TVA à 20% : prix TTC = prix HT × 1,20. Avec 10% : × 1,10. Avec 5,5% : × 1,055."}},{"@type":"Question","name":"Quelle TVA s'applique aux travaux ?","acceptedAnswer":{"@type":"Answer","text":"Les travaux de rénovation dans les logements de plus de 2 ans sont soumis à la TVA à 10%. Les travaux d'amélioration énergétique peuvent bénéficier du taux de 5,5%."}},{"@type":"Question","name":"Comment calculer le prix HT à partir du TTC ?","acceptedAnswer":{"@type":"Answer","text":"Divisez le prix TTC par (1 + taux TVA). Avec une TVA à 20% : prix HT = prix TTC ÷ 1,20. Exemple : 120 € TTC ÷ 1,20 = 100 € HT."}}]}
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --black: #0a0a0a;
-      --white: #ffffff;
-      --gray:  #8a8a8a;
-      --light: #f2f2f2;
-      --blue:  #1a4a7a;
-      --blue-bg: #eef3fa;
-    }
-
-    html, body {
-      height: 100%;
-      background: var(--white);
-      color: var(--black);
-      font-family: 'Inter', -apple-system, sans-serif;
-      font-weight: 400;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 28px;
-      background: rgba(255,255,255,0.82);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      text-decoration: none;
-      color: var(--black);
-    }
-
-    .logo-dot {
-      width: 18px; height: 18px;
-      background: var(--black);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .logo-dot svg { width: 11px; height: 11px; }
-
-    .logo-name {
-      font-size: 13.5px;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 0;
-    }
-
-    nav a {
-      font-size: 13px;
-      color: var(--black);
-      text-decoration: none;
-      padding: 6px 13px;
-      border-radius: 7px;
-      transition: background 0.12s;
-    }
-
-    nav a:hover { background: var(--light); }
-    nav a.nav-active {
-      background: var(--black);
-      color: var(--white);
-      border-radius: 100px;
-      padding: 8px 18px;
-      font-weight: 500;
-    }
-
-    nav a.nav-active:hover { background: #282828; }
-    
-
-    
-
-    main {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 100px 20px 80px;
-    }
-
-    .hero-eyebrow {
-      font-size: 13px;
-      color: var(--gray);
-      letter-spacing: 0.01em;
-      margin-bottom: 12px;
-      text-align: center;
-    }
-
-    .hero-title {
-      font-size: clamp(54px, 9vw, 104px);
-      font-weight: 300;
-      letter-spacing: -0.035em;
-      line-height: 1.0;
-      text-align: center;
-      color: var(--black);
-      margin-bottom: 52px;
-      user-select: none;
-    }
-
-    /* FLOATING CARD */
-    .float-wrap {
-      position: relative;
-      width: 420px;
-      max-width: calc(100vw - 40px);
-    }
-
-    .float-card {
-      background: var(--white);
-      border-radius: 26px;
-      border: 1px solid rgba(0,0,0,0.08);
-      overflow: hidden;
-      box-shadow:
-        0 1px 1px rgba(0,0,0,0.03),
-        0 4px 8px rgba(0,0,0,0.05),
-        0 12px 24px rgba(0,0,0,0.07),
-        0 32px 56px rgba(0,0,0,0.09),
-        0 64px 96px rgba(0,0,0,0.07);
-      animation: levitate 7s ease-in-out infinite;
-      transform-origin: center bottom;
-    }
-
-    @keyframes levitate {
-      0%   { transform: translateY(0px) rotateX(0deg); }
-      50%  { transform: translateY(-12px) rotateX(1deg); }
-      100% { transform: translateY(0px) rotateX(0deg); }
-    }
-
-    .card-chrome {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 14px 18px 10px;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-    }
-
-    .chrome-dot { width: 10px; height: 10px; border-radius: 50%; }
-    .d-red   { background: #ff5f57; }
-    .d-amber { background: #ffbd2e; }
-    .d-green { background: #28c840; }
-
-    .chrome-label {
-      font-size: 11px;
-      color: #ccc;
-      margin-left: auto;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .card-body { padding: 20px 20px 20px; }
-
-    /* Taux selector */
-    .taux-row {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 16px;
-      justify-content: center;
-    }
-
-    .taux-btn {
-      flex: 1;
-      background: #f7f7f7;
-      border: 1.5px solid #ececec;
-      border-radius: 10px;
-      padding: 9px 6px;
-      font-size: 13px;
-      font-weight: 500;
-      font-family: 'Inter', sans-serif;
-      color: var(--gray);
-      cursor: pointer;
-      transition: all 0.14s;
-      text-align: center;
-    }
-
-    .taux-btn:hover { background: #f0f0f0; color: var(--black); }
-
-    .taux-btn.active {
-      background: var(--black);
-      border-color: var(--black);
-      color: var(--white);
-    }
-
-    .taux-label {
-      font-size: 9px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #c0c0c0;
-      text-align: center;
-      margin-bottom: 8px;
-      display: block;
-    }
-
-    /* Direction toggle */
-    .dir-row {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-
-    .dir-btn {
-      flex: 1;
-      background: #f7f7f7;
-      border: 1.5px solid #ececec;
-      border-radius: 10px;
-      padding: 9px 6px;
-      font-size: 12px;
-      font-weight: 500;
-      font-family: 'Inter', sans-serif;
-      color: var(--gray);
-      cursor: pointer;
-      transition: all 0.14s;
-      text-align: center;
-    }
-
-    .dir-btn.active {
-      background: var(--black);
-      border-color: var(--black);
-      color: var(--white);
-    }
-
-    /* Input */
-    .field { display: flex; flex-direction: column; gap: 5px; align-items: center; margin-bottom: 14px; }
-
-    .field-lbl {
-      font-size: 9px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #c0c0c0;
-      text-align: center;
-    }
-
-    .field input {
-      width: 100%;
-      background: #f7f7f7;
-      border: 1.5px solid #ececec;
-      border-radius: 13px;
-      padding: 13px 14px;
-      font-size: 28px;
-      font-weight: 300;
-      font-family: 'Inter', sans-serif;
-      color: var(--black);
-      outline: none;
-      text-align: center;
-      transition: border-color 0.14s, background 0.14s;
-      -moz-appearance: textfield;
-    }
-
-    .field input::-webkit-outer-spin-button,
-    .field input::-webkit-inner-spin-button { -webkit-appearance: none; }
-    .field input::placeholder { color: #d0d0d0; }
-    .field input:focus { border-color: var(--black); background: #fff; }
-
-    /* Result */
-    .result-area {
-      background: #f7f7f7;
-      border-radius: 16px;
-      padding: 16px 18px;
-      margin-bottom: 14px;
-      min-height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.25s;
-      text-align: center;
-    }
-
-    .result-area.has-result { background: var(--blue-bg); }
-
-    .res-idle {
-      font-size: 12px;
-      color: #ccc;
-      line-height: 1.6;
-      text-align: center;
-    }
-
-    .res-content {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .res-main {
-      font-size: 42px;
-      font-weight: 300;
-      letter-spacing: -0.04em;
-      color: var(--blue);
-      line-height: 1;
-    }
-
-    .res-sub-row {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .res-pill {
-      font-size: 10px; font-weight: 500;
-      letter-spacing: 0.07em; text-transform: uppercase;
-      padding: 3px 10px; border-radius: 100px;
-      background: rgba(26,74,122,0.12); color: var(--blue);
-    }
-
-    .res-secondary {
-      font-size: 11px; color: #bbb;
-    }
-
-    .res-formula {
-      font-size: 11px;
-      font-style: italic;
-      color: #c8c8c8;
-      text-align: center;
-      margin-top: 2px;
-    }
-
-    /* CTA */
-    .calc-btn {
-      width: 100%;
-      background: var(--black);
-      color: var(--white);
-      border: none;
-      border-radius: 13px;
-      padding: 15px;
-      font-size: 13.5px;
-      font-weight: 500;
-      font-family: 'Inter', sans-serif;
-      cursor: pointer;
-      transition: background 0.12s, transform 0.1s;
-    }
-
-    .calc-btn:hover  { background: #1e1e1e; }
-    .calc-btn:active { transform: scale(0.99); }
-
-    .ground-shadow {
-      width: 60%;
-      height: 20px;
-      margin: 0 auto;
-      background: radial-gradient(ellipse at center, rgba(0,0,0,0.15) 0%, transparent 70%);
-      border-radius: 50%;
-      animation: gshadow 7s ease-in-out infinite;
-    }
-
-    @keyframes gshadow {
-      0%   { transform: scaleX(1);    opacity: 0.7; }
-      50%  { transform: scaleX(0.82); opacity: 0.4; }
-      100% { transform: scaleX(1);    opacity: 0.7; }
-    }
-
-    footer {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-      pointer-events: none;
-    }
-
-    footer span {
-      font-size: 11.5px;
-      color: #d0d0d0;
-    }
-
-    @media (max-width: 600px) {
-      nav { display: none; }
-      .hero-title { font-size: 46px; margin-bottom: 36px; }
-    }
+    :root { --black:#0a0a0a; --white:#ffffff; --gray:#8a8a8a; --light:#f2f2f2; --acc:#1a4a7a; --acc-bg:#eef3fa; }
+    html,body { background:var(--white); color:var(--black); font-family:'Inter',-apple-system,sans-serif; font-weight:400; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+    header { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:18px 28px; background:rgba(255,255,255,0.82); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); }
+    .logo { display:flex; align-items:center; gap:7px; text-decoration:none; color:var(--black); }
+    .logo-dot { width:18px; height:18px; background:var(--black); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .logo-dot svg { width:11px; height:11px; }
+    .logo-name { font-size:13.5px; font-weight:500; letter-spacing:-0.01em; }
+    nav { display:flex; align-items:center; gap:0; }
+    nav a { font-size:13px; color:var(--black); text-decoration:none; padding:6px 13px; border-radius:7px; transition:background 0.12s; }
+    nav a:hover { background:var(--light); }
+    nav a.nav-active { background:var(--black); color:var(--white); border-radius:100px; padding:8px 18px; font-weight:500; }
+    nav a.nav-active:hover { background:#282828; }
+    main { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:100px 20px 60px; }
+    .hero-eyebrow { font-size:13px; color:var(--gray); letter-spacing:0.01em; margin-bottom:12px; text-align:center; }
+    .hero-title { font-size:clamp(54px,9vw,104px); font-weight:300; letter-spacing:-0.035em; line-height:1.0; text-align:center; color:var(--black); margin-bottom:52px; user-select:none; }
+    .float-wrap { position:relative; width:420px; max-width:calc(100vw - 40px); }
+    .float-card { background:var(--white); border-radius:26px; border:1px solid rgba(0,0,0,0.08); overflow:hidden; box-shadow:0 1px 1px rgba(0,0,0,0.03),0 4px 8px rgba(0,0,0,0.05),0 12px 24px rgba(0,0,0,0.07),0 32px 56px rgba(0,0,0,0.09),0 64px 96px rgba(0,0,0,0.07); animation:levitate 7s ease-in-out infinite; transform-origin:center bottom; }
+    @keyframes levitate { 0%{transform:translateY(0px) rotateX(0deg)} 50%{transform:translateY(-12px) rotateX(1deg)} 100%{transform:translateY(0px) rotateX(0deg)} }
+    .card-chrome { display:flex; align-items:center; gap:6px; padding:14px 18px 10px; border-bottom:1px solid rgba(0,0,0,0.05); }
+    .chrome-dot { width:10px; height:10px; border-radius:50%; }
+    .d-red{background:#ff5f57} .d-amber{background:#ffbd2e} .d-green{background:#28c840}
+    .chrome-label { font-size:11px; color:#ccc; margin-left:auto; letter-spacing:0.06em; text-transform:uppercase; }
+    .card-body { padding:20px; }
+    .taux-row { display:flex; gap:8px; margin-bottom:16px; justify-content:center; }
+    .taux-btn { flex:1; background:#f7f7f7; border:1.5px solid #ececec; border-radius:10px; padding:9px 6px; font-size:13px; font-weight:500; font-family:'Inter',sans-serif; color:var(--gray); cursor:pointer; transition:all 0.14s; text-align:center; }
+    .taux-btn:hover { background:#f0f0f0; color:var(--black); }
+    .taux-btn.active { background:var(--black); border-color:var(--black); color:var(--white); }
+    .taux-label { font-size:9px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#c0c0c0; text-align:center; margin-bottom:8px; display:block; }
+    .dir-row { display:flex; gap:8px; margin-bottom:16px; }
+    .dir-btn { flex:1; background:#f7f7f7; border:1.5px solid #ececec; border-radius:10px; padding:9px 6px; font-size:12px; font-weight:500; font-family:'Inter',sans-serif; color:var(--gray); cursor:pointer; transition:all 0.14s; text-align:center; }
+    .dir-btn.active { background:var(--black); border-color:var(--black); color:var(--white); }
+    .field { display:flex; flex-direction:column; gap:5px; align-items:center; margin-bottom:14px; }
+    .field-lbl { font-size:9px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#c0c0c0; text-align:center; }
+    .field input { width:100%; background:#f7f7f7; border:1.5px solid #ececec; border-radius:13px; padding:13px 14px; font-size:28px; font-weight:300; font-family:'Inter',sans-serif; color:var(--black); outline:none; text-align:center; transition:border-color 0.14s,background 0.14s; -moz-appearance:textfield; }
+    .field input::-webkit-outer-spin-button,.field input::-webkit-inner-spin-button{-webkit-appearance:none}
+    .field input::placeholder{color:#d0d0d0} .field input:focus{border-color:var(--black);background:#fff}
+    .result-area { background:#f7f7f7; border-radius:16px; padding:16px 18px; margin-bottom:14px; min-height:70px; display:flex; align-items:center; justify-content:center; transition:background 0.25s; text-align:center; }
+    .result-area.has-result{background:var(--acc-bg)}
+    .res-idle{font-size:12px;color:#ccc;line-height:1.6;text-align:center}
+    .res-content{width:100%;display:flex;flex-direction:column;align-items:center;gap:6px}
+    .res-main{font-size:42px;font-weight:300;letter-spacing:-0.04em;color:var(--acc);line-height:1}
+    .res-sub-row{display:flex;gap:10px;align-items:center;justify-content:center}
+    .res-pill{font-size:10px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(26,74,122,0.12);color:var(--acc)}
+    .res-secondary{font-size:11px;color:#bbb}
+    .res-formula{font-size:11px;font-style:italic;color:#c8c8c8;text-align:center;margin-top:2px}
+    .calc-btn{width:100%;background:var(--black);color:var(--white);border:none;border-radius:13px;padding:15px;font-size:13.5px;font-weight:500;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.12s,transform 0.1s}
+    .calc-btn:hover{background:#1e1e1e} .calc-btn:active{transform:scale(0.99)}
+    .ground-shadow{width:60%;height:20px;margin:0 auto;background:radial-gradient(ellipse at center,rgba(0,0,0,0.15) 0%,transparent 70%);border-radius:50%;animation:gshadow 7s ease-in-out infinite}
+    @keyframes gshadow{0%{transform:scaleX(1);opacity:0.7}50%{transform:scaleX(0.82);opacity:0.4}100%{transform:scaleX(1);opacity:0.7}}
+    .seo-section{max-width:560px;margin:72px auto 0;padding:0 20px 100px}
+    .seo-intro{text-align:center;margin-bottom:40px}
+    .seo-intro h2{font-size:15px;font-weight:500;color:var(--black);margin-bottom:8px;letter-spacing:-0.01em}
+    .seo-intro p{font-size:13px;color:var(--gray);line-height:1.7}
+    .seo-intro code{font-family:'SF Mono','Fira Code',monospace;font-size:12px;background:var(--light);padding:2px 7px;border-radius:5px;color:var(--black)}
+    .faq{border-top:1px solid #ececec}
+    .faq-item{border-bottom:1px solid #ececec}
+    .faq-q{width:100%;background:none;border:none;display:flex;align-items:center;justify-content:space-between;padding:16px 0;cursor:pointer;font-size:13.5px;font-weight:400;font-family:'Inter',sans-serif;color:var(--black);text-align:left;gap:16px;transition:color 0.12s}
+    .faq-q:hover{color:var(--gray)}
+    .faq-icon{width:16px;height:16px;flex-shrink:0;position:relative;color:var(--gray);transition:transform 0.25s ease}
+    .faq-icon::before,.faq-icon::after{content:'';position:absolute;background:currentColor;border-radius:2px}
+    .faq-icon::before{width:10px;height:1.5px;top:50%;left:50%;transform:translate(-50%,-50%)}
+    .faq-icon::after{width:1.5px;height:10px;top:50%;left:50%;transform:translate(-50%,-50%);transition:opacity 0.25s,transform 0.25s}
+    .faq-item.open .faq-icon{transform:rotate(45deg)}
+    .faq-a{overflow:hidden;max-height:0;transition:max-height 0.35s ease,padding 0.25s ease}
+    .faq-item.open .faq-a{max-height:200px}
+    .faq-a p{font-size:13px;color:var(--gray);line-height:1.75;padding-bottom:16px}
+    footer{position:fixed;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:center;padding:16px;pointer-events:none}
+    footer span{font-size:11.5px;color:#d0d0d0}
+    @media(max-width:600px){nav{display:none}.hero-title{font-size:46px;margin-bottom:36px}}
   </style>
 </head>
 <body>
-
 <header>
-  <a class="logo" href="/">
-    <div class="logo-dot">
-      <svg viewBox="0 0 11 11" fill="none">
-        <rect x="1"   y="1"   width="3.5" height="2.2" rx="0.6" fill="white"/>
-        <rect x="6.5" y="1"   width="3.5" height="2.2" rx="0.6" fill="white"/>
-        <rect x="1"   y="4.4" width="3.5" height="1.6" rx="0.6" fill="white"/>
-        <rect x="6.5" y="4.4" width="3.5" height="1.6" rx="0.6" fill="white"/>
-        <rect x="1"   y="7.2" width="3.5" height="1.6" rx="0.6" fill="white"/>
-        <rect x="6.5" y="7.2" width="3.5" height="1.6" rx="0.6" fill="white"/>
-      </svg>
-    </div>
-    <span class="logo-name">Calculer-Facile</span>
-  </a>
-
+  <a class="logo" href="/"><div class="logo-dot"><svg viewBox="0 0 11 11" fill="none"><rect x="1" y="1" width="3.5" height="2.2" rx="0.6" fill="white"/><rect x="6.5" y="1" width="3.5" height="2.2" rx="0.6" fill="white"/><rect x="1" y="4.4" width="3.5" height="1.6" rx="0.6" fill="white"/><rect x="6.5" y="4.4" width="3.5" height="1.6" rx="0.6" fill="white"/><rect x="1" y="7.2" width="3.5" height="1.6" rx="0.6" fill="white"/><rect x="6.5" y="7.2" width="3.5" height="1.6" rx="0.6" fill="white"/></svg></div><span class="logo-name">Calculer-Facile</span></a>
   <nav>
-    <a href="/fr/" >Évolution</a>
+    <a href="/fr/">Évolution</a>
     <a href="/fr/tva/" class="nav-active">TVA</a>
-    <a href="/fr/remise/" >Remise</a>
-    <a href="/fr/imc/" >IMC</a>
-    <a href="/fr/credit/" >Crédit</a>
-    <a href="/fr/carburant/" >Carburant</a>
+    <a href="/fr/remise/">Remise</a>
+    <a href="/fr/imc/">IMC</a>
+    <a href="/fr/credit/">Crédit</a>
+    <a href="/fr/carburant/">Carburant</a>
   </nav>
 </header>
-
 <main>
   <p class="hero-eyebrow">Outil gratuit &mdash; résultat immédiat</p>
   <h1 class="hero-title">Calcul TVA</h1>
-
   <div class="float-wrap">
     <div class="float-card">
-
-      <div class="card-chrome">
-        <div class="chrome-dot d-red"></div>
-        <div class="chrome-dot d-amber"></div>
-        <div class="chrome-dot d-green"></div>
-        <span class="chrome-label">calculer-facile.fr</span>
-      </div>
-
+      <div class="card-chrome"><div class="chrome-dot d-red"></div><div class="chrome-dot d-amber"></div><div class="chrome-dot d-green"></div><span class="chrome-label">calculer-facile.fr</span></div>
       <div class="card-body">
-
-        <!-- Taux TVA -->
         <span class="taux-label">Taux de TVA</span>
         <div class="taux-row">
           <button class="taux-btn active" data-taux="20">20 %</button>
@@ -448,130 +129,74 @@
           <button class="taux-btn" data-taux="5.5">5,5 %</button>
           <button class="taux-btn" data-taux="2.1">2,1 %</button>
         </div>
-
-        <!-- Direction -->
         <div class="dir-row">
           <button class="dir-btn active" id="dir-ht">HT → TTC</button>
           <button class="dir-btn" id="dir-ttc">TTC → HT</button>
         </div>
-
-        <!-- Input -->
         <div class="field">
           <span class="field-lbl" id="input-label">Prix HT (€)</span>
           <input id="prix" type="number" placeholder="100,00" inputmode="decimal" autofocus />
         </div>
-
-        <!-- Result -->
-        <div class="result-area" id="res-area">
-          <p class="res-idle">Entrez un prix et appuyez sur Calculer.</p>
-        </div>
-
+        <div class="result-area" id="res-area"><p class="res-idle">Entrez un prix et appuyez sur Calculer.</p></div>
         <button class="calc-btn" id="calc-btn">Calculer la TVA</button>
-
       </div>
     </div>
-
     <div class="ground-shadow"></div>
   </div>
+
+  <section class="seo-section">
+    <div class="seo-intro">
+      <h2>Comment calculer la TVA ?</h2>
+      <p>Pour obtenir le prix TTC&nbsp;: <code>Prix HT × (1 + taux TVA)</code><br>Pour obtenir le prix HT&nbsp;: <code>Prix TTC ÷ (1 + taux TVA)</code></p>
+    </div>
+    <div class="faq" role="list">
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">Comment calculer la TVA à 20% ?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><p>Multipliez le prix HT par 1,20 pour obtenir le TTC. Exemple&nbsp;: 100 € HT × 1,20 = <strong>120 € TTC</strong>. Le montant de TVA est de 20 €. Pour l'inverse, divisez le TTC par 1,20.</p></div>
+      </div>
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">Quelle TVA s'applique aux travaux ?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><p>Les travaux de rénovation dans un logement de plus de 2 ans sont soumis à la TVA à <strong>10%</strong>. Les travaux d'amélioration énergétique (isolation, pompe à chaleur…) bénéficient du taux réduit de <strong>5,5%</strong>. Les constructions neuves sont taxées à 20%.</p></div>
+      </div>
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">Comment passer d'un prix TTC à HT ?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><p>Divisez le prix TTC par (1 + taux). Avec 20% : <strong>TTC ÷ 1,20</strong>. Avec 10% : TTC ÷ 1,10. Avec 5,5% : TTC ÷ 1,055. Exemple : 240 € TTC ÷ 1,20 = 200 € HT.</p></div>
+      </div>
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">Quelle est la TVA sur les restaurants et la nourriture ?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><p>Les produits alimentaires de base (épicerie, supermarché) sont taxés à <strong>5,5%</strong>. La restauration (cafés, restaurants) est soumise à <strong>10%</strong>. L'alcool reste à 20%.</p></div>
+      </div>
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">Comment calculer le montant de TVA sur une facture ?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><p>Montant TVA = Prix HT × taux. Exemple avec 20% : 500 € HT × 0,20 = <strong>100 € de TVA</strong>. Le total TTC sera de 600 €. Si vous partez du TTC : Montant TVA = TTC − (TTC ÷ 1,20).</p></div>
+      </div>
+    </div>
+  </section>
 </main>
-
-<footer>
-  <span>© 2025 calculer-facile.fr</span>
-</footer>
-
+<footer><span>© 2025 calculer-facile.fr</span></footer>
 <script>
-  const prixEl   = document.getElementById('prix');
-  const btn      = document.getElementById('calc-btn');
-  const area     = document.getElementById('res-area');
-  const inpLabel = document.getElementById('input-label');
-  const dirHt    = document.getElementById('dir-ht');
-  const dirTtc   = document.getElementById('dir-ttc');
-
-  let taux = 20;
-  let direction = 'ht'; // 'ht' = HT→TTC, 'ttc' = TTC→HT
-
-  // Taux buttons
-  document.querySelectorAll('.taux-btn').forEach(b => {
-    b.addEventListener('click', () => {
-      document.querySelectorAll('.taux-btn').forEach(x => x.classList.remove('active'));
-      b.classList.add('active');
-      taux = parseFloat(b.dataset.taux);
-      reset();
-    });
-  });
-
-  // Direction buttons
-  dirHt.addEventListener('click', () => {
-    direction = 'ht';
-    dirHt.classList.add('active');
-    dirTtc.classList.remove('active');
-    inpLabel.textContent = 'Prix HT (€)';
-    prixEl.placeholder = '100,00';
-    reset();
-  });
-
-  dirTtc.addEventListener('click', () => {
-    direction = 'ttc';
-    dirTtc.classList.add('active');
-    dirHt.classList.remove('active');
-    inpLabel.textContent = 'Prix TTC (€)';
-    prixEl.placeholder = '120,00';
-    reset();
-  });
-
-  function reset() {
-    prixEl.value = '';
-    area.className = 'result-area';
-    area.innerHTML = '<p class="res-idle">Entrez un prix et appuyez sur Calculer.</p>';
+  const prixEl=document.getElementById('prix'),btn=document.getElementById('calc-btn'),area=document.getElementById('res-area'),inpLabel=document.getElementById('input-label'),dirHt=document.getElementById('dir-ht'),dirTtc=document.getElementById('dir-ttc');
+  let taux=20,direction='ht';
+  document.querySelectorAll('.taux-btn').forEach(b=>{b.addEventListener('click',()=>{document.querySelectorAll('.taux-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');taux=parseFloat(b.dataset.taux);reset();});});
+  dirHt.addEventListener('click',()=>{direction='ht';dirHt.classList.add('active');dirTtc.classList.remove('active');inpLabel.textContent='Prix HT (€)';prixEl.placeholder='100,00';reset();});
+  dirTtc.addEventListener('click',()=>{direction='ttc';dirTtc.classList.add('active');dirHt.classList.remove('active');inpLabel.textContent='Prix TTC (€)';prixEl.placeholder='120,00';reset();});
+  function reset(){prixEl.value='';area.className='result-area';area.innerHTML='<p class="res-idle">Entrez un prix et appuyez sur Calculer.</p>';}
+  function fmt(n){return n.toLocaleString('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2});}
+  function calc(){
+    const val=parseFloat(prixEl.value);
+    if(isNaN(val)||val<0){area.className='result-area';area.innerHTML='<p class="res-idle">Entrez un prix valide pour lancer le calcul.</p>';return;}
+    let ht,ttc,montantTva;
+    if(direction==='ht'){ht=val;montantTva=val*taux/100;ttc=val+montantTva;}else{ttc=val;ht=val/(1+taux/100);montantTva=ttc-ht;}
+    const mainVal=direction==='ht'?fmt(ttc):fmt(ht);
+    const mainLabel=direction==='ht'?'Prix TTC':'Prix HT';
+    const secLabel=direction==='ht'?`HT\u00a0: ${fmt(ht)}\u00a0€`:`TTC\u00a0: ${fmt(ttc)}\u00a0€`;
+    const formula=direction==='ht'?`${fmt(ht)}\u00a0€ × (1 + ${taux} ÷ 100) = ${fmt(ttc)}\u00a0€`:`${fmt(ttc)}\u00a0€ ÷ (1 + ${taux} ÷ 100) = ${fmt(ht)}\u00a0€`;
+    area.className='result-area has-result';
+    area.innerHTML=`<div class="res-content"><span class="res-main">${mainVal}\u00a0€</span><div class="res-sub-row"><span class="res-pill">${mainLabel} · TVA ${taux}%</span><span class="res-secondary">TVA\u00a0: ${fmt(montantTva)}\u00a0€</span></div><p class="res-secondary" style="margin-top:2px;">${secLabel}</p><p class="res-formula">${formula}</p></div>`;
   }
-
-  function fmt(n) {
-    return n.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  }
-
-  function calc() {
-    const val = parseFloat(prixEl.value);
-    if (isNaN(val) || val < 0) {
-      area.className = 'result-area';
-      area.innerHTML = '<p class="res-idle">Entrez un prix valide pour lancer le calcul.</p>';
-      return;
-    }
-
-    let ht, ttc, montantTva;
-
-    if (direction === 'ht') {
-      ht         = val;
-      montantTva = val * taux / 100;
-      ttc        = val + montantTva;
-    } else {
-      ttc        = val;
-      ht         = val / (1 + taux / 100);
-      montantTva = ttc - ht;
-    }
-
-    const mainVal   = direction === 'ht' ? fmt(ttc)        : fmt(ht);
-    const mainLabel = direction === 'ht' ? 'Prix TTC'      : 'Prix HT';
-    const secLabel  = direction === 'ht' ? `HT : ${fmt(ht)} €` : `TTC : ${fmt(ttc)} €`;
-    const formula   = direction === 'ht'
-      ? `${fmt(ht)} € × (1 + ${taux} ÷ 100) = ${fmt(ttc)} €`
-      : `${fmt(ttc)} € ÷ (1 + ${taux} ÷ 100) = ${fmt(ht)} €`;
-
-    area.className = 'result-area has-result';
-    area.innerHTML = `
-      <div class="res-content">
-        <span class="res-main">${mainVal} €</span>
-        <div class="res-sub-row">
-          <span class="res-pill">${mainLabel} · TVA ${taux}%</span>
-          <span class="res-secondary">TVA : ${fmt(montantTva)} €</span>
-        </div>
-        <p class="res-secondary" style="margin-top:2px;">${secLabel}</p>
-        <p class="res-formula">${formula}</p>
-      </div>`;
-  }
-
-  btn.addEventListener('click', calc);
-  prixEl.addEventListener('keydown', e => { if (e.key === 'Enter') calc(); });
+  btn.addEventListener('click',calc);
+  prixEl.addEventListener('keydown',e=>{if(e.key==='Enter')calc();});
+  document.querySelectorAll('.faq-q').forEach(b=>{b.addEventListener('click',()=>{const item=b.parentElement;const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-q').setAttribute('aria-expanded','false');});if(!isOpen){item.classList.add('open');b.setAttribute('aria-expanded','true');}});});
 </script>
-
 </body>
 </html>
