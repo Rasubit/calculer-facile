@@ -22,6 +22,7 @@
   <meta name="twitter:description" content="Calculez le coût en carburant de votre trajet. Gratuit et immédiat.">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculateur Coût Carburant","url":"https://calculer-facile.fr/fr/carburant/","description":"Calcule le coût en carburant d'un trajet ou la consommation réelle aux 100 km.","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","inLanguage":"fr","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"publisher":{"@type":"Organization","name":"Calculer-Facile","url":"https://calculer-facile.fr"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Comment calculer le coût en carburant d'un trajet ?","acceptedAnswer":{"@type":"Answer","text":"Formule : coût = distance (km) × consommation (L/100km) ÷ 100 × prix du carburant (€/L). Exemple : 300 km × 6 L/100 ÷ 100 × 1,85 €/L = 33,30 €."}},{"@type":"Question","name":"Comment calculer sa consommation réelle aux 100 km ?","acceptedAnswer":{"@type":"Answer","text":"Formule : consommation = litres consommés ÷ kilomètres parcourus × 100. Exemple : 45 litres pour 700 km → 45 ÷ 700 × 100 = 6,43 L/100km."}},{"@type":"Question","name":"Quel est le prix actuel de l'essence et du diesel en France ?","acceptedAnswer":{"@type":"Answer","text":"Les prix varient chaque semaine. Pour connaître le prix exact près de chez vous, consultez le site gouvernemental prix-carburants.gouv.fr qui recense tous les prix en temps réel."}}]}</script>
+  <link rel="icon" type="image/png" href="/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,11 +41,7 @@
     nav a:hover{background:var(--light)}
     nav a.nav-active{background:var(--black);color:var(--white);border-radius:100px;padding:8px 18px;font-weight:500}
     nav a.nav-active:hover{background:#282828}
-    main {
-      display:flex; flex-direction:column;
-      align-items:center; justify-content:flex-start;
-      padding:140px 20px 80px;
-    }
+    main{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 20px 60px}
     .hero-eyebrow{font-size:13px;color:var(--gray);letter-spacing:0.01em;margin-bottom:12px;text-align:center}
     .hero-title{font-size:clamp(48px,8vw,100px);font-weight:300;letter-spacing:-0.035em;line-height:1.0;text-align:center;color:var(--black);margin-bottom:52px;user-select:none}
     .float-wrap{position:relative;width:420px;max-width:calc(100vw - 40px)}
@@ -103,7 +100,16 @@
 <body>
 <header>
   <a class="logo" href="/"><div class="logo-dot"><svg viewBox="0 0 11 11" fill="none"><rect x="1" y="1" width="3.5" height="2.2" rx="0.6" fill="white"/><rect x="6.5" y="1" width="3.5" height="2.2" rx="0.6" fill="white"/><rect x="1" y="4.4" width="3.5" height="1.6" rx="0.6" fill="white"/><rect x="6.5" y="4.4" width="3.5" height="1.6" rx="0.6" fill="white"/><rect x="1" y="7.2" width="3.5" height="1.6" rx="0.6" fill="white"/><rect x="6.5" y="7.2" width="3.5" height="1.6" rx="0.6" fill="white"/></svg></div><span class="logo-name">Calculer-Facile</span></a>
-  <nav><a href="/fr/">Évolution</a><a href="/fr/tva/">TVA</a><a href="/fr/remise/">Remise</a><a href="/fr/imc/">IMC</a><a href="/fr/credit/">Crédit</a><a href="/fr/carburant/" class="nav-active">Carburant</a></nav>
+  <nav>
+    <a href="/fr/">Évolution</a>
+    <a href="/fr/tva/">TVA</a>
+    <a href="/fr/remise/">Remise</a>
+    <a href="/fr/imc/">IMC</a>
+    <a href="/fr/credit/">Crédit</a>
+    <a href="/fr/salaire/">Salaire</a>
+    <a href="/fr/interets/">Intérêts</a>
+    <a href="/fr/carburant/" class="nav-active">Carburant</a>
+  </nav>
 </header>
 <main>
   <p class="hero-eyebrow">Outil gratuit &mdash; résultat immédiat</p>
