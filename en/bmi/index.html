@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>BMI Calculator — Body Mass Index | Calculer-Facile</title>
+  <meta name="description" content="Calculate your BMI instantly. Enter your weight and height to get your Body Mass Index and category.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculer-facile.fr/en/bmi/">
+  <link rel="alternate" hreflang="en" href="https://calculer-facile.fr/en/bmi/"/>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"BMI Calculator","url":"https://calculer-facile.fr/en/bmi/","applicationCategory":"HealthApplication","operatingSystem":"Web","inLanguage":"en","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"publisher":{"@type":"Organization","name":"Calculer-Facile","url":"https://calculer-facile.fr"}}</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html,body{background:#fff;color:#0a0a0a;font-family:'Inter',-apple-system,sans-serif;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 28px;background:rgba(255,255,255,0.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+    .logo{display:flex;align-items:center;gap:7px;text-decoration:none;color:#0a0a0a}
+    .logo-dot{width:18px;height:18px;background:#0a0a0a;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .logo-dot svg{width:11px;height:11px}
+    .logo-name{font-size:13.5px;font-weight:500;letter-spacing:-0.01em}
+    nav{display:flex;align-items:center;gap:0;flex-wrap:wrap}
+    nav a{font-size:13px;color:#0a0a0a;text-decoration:none;padding:6px 13px;border-radius:7px;transition:background 0.12s}
+    nav a:hover{background:#f2f2f2}
+    nav a.nav-active{background:#0a0a0a;color:#fff;border-radius:100px;padding:8px 18px;font-weight:500}
+    nav a.nav-active:hover{background:#282828}
+    main{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:140px 20px 80px}
+    .hero-eyebrow{font-size:13px;color:#8a8a8a;letter-spacing:0.01em;margin-bottom:12px;text-align:center}
+    .hero-title{font-weight:300;letter-spacing:-0.035em;line-height:1.0;text-align:center;color:#0a0a0a;margin-bottom:52px;user-select:none}
+    .float-wrap{position:relative;width:420px;max-width:calc(100vw - 40px)}
+    .float-card{background:#fff;border-radius:26px;border:1px solid rgba(0,0,0,0.08);overflow:hidden;box-shadow:0 1px 1px rgba(0,0,0,0.03),0 4px 8px rgba(0,0,0,0.05),0 12px 24px rgba(0,0,0,0.07),0 32px 56px rgba(0,0,0,0.09),0 64px 96px rgba(0,0,0,0.07);animation:levitate 7s ease-in-out infinite;transform-origin:center bottom}
+    @keyframes levitate{0%{transform:translateY(0px) rotateX(0deg)}50%{transform:translateY(-12px) rotateX(1deg)}100%{transform:translateY(0px) rotateX(0deg)}}
+    .card-chrome{display:flex;align-items:center;gap:6px;padding:14px 18px 10px;border-bottom:1px solid rgba(0,0,0,0.05)}
+    .chrome-dot{width:10px;height:10px;border-radius:50%}
+    .d-red{background:#ff5f57}.d-amber{background:#ffbd2e}.d-green{background:#28c840}
+    .chrome-label{font-size:11px;color:#ccc;margin-left:auto;letter-spacing:0.06em;text-transform:uppercase}
+    .card-body{padding:20px}
+    .row-lbl{font-size:9px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#c0c0c0;text-align:center;display:block;margin-bottom:8px}
+    .row-btns{display:flex;gap:8px;margin-bottom:12px}
+    .sel-btn{flex:1;background:#f7f7f7;border:1.5px solid #ececec;border-radius:10px;padding:9px 4px;font-size:12px;font-weight:500;font-family:'Inter',sans-serif;color:#8a8a8a;cursor:pointer;transition:all 0.14s;text-align:center}
+    .sel-btn:hover{background:#f0f0f0;color:#0a0a0a}
+    .sel-btn.active{background:#0a0a0a;border-color:#0a0a0a;color:#fff}
+    .field{display:flex;flex-direction:column;gap:5px;align-items:center;margin-bottom:14px}
+    .field-lbl{font-size:9px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#c0c0c0;text-align:center}
+    .input-wrap{position:relative;width:100%}
+    .field input{width:100%;background:#f7f7f7;border:1.5px solid #ececec;border-radius:13px;padding:12px 50px 12px 14px;font-size:24px;font-weight:300;font-family:'Inter',sans-serif;color:#0a0a0a;outline:none;text-align:center;transition:border-color 0.14s,background 0.14s;-moz-appearance:textfield}
+    .field input::-webkit-outer-spin-button,.field input::-webkit-inner-spin-button{-webkit-appearance:none}
+    .field input::placeholder{color:#d0d0d0}.field input:focus{border-color:#0a0a0a;background:#fff}
+    .unit-mark{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:12px;font-weight:500;color:#bbb;pointer-events:none;white-space:nowrap}
+    .result-area{background:#f7f7f7;border-radius:16px;padding:16px 18px;margin-bottom:14px;min-height:70px;display:flex;align-items:center;justify-content:center;transition:background 0.25s;text-align:center}
+    .res-idle{font-size:12px;color:#ccc;line-height:1.6;text-align:center}
+    .res-content{width:100%;display:flex;flex-direction:column;align-items:center;gap:6px}
+    .res-main{font-size:42px;font-weight:300;letter-spacing:-0.04em;line-height:1}
+    .res-sub-row{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap}
+    .res-pill{font-size:10px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;padding:3px 10px;border-radius:100px}
+    .res-secondary{font-size:11px;color:#bbb}
+    .res-formula{font-size:11px;font-style:italic;color:#c8c8c8;text-align:center;margin-top:2px}
+    .calc-btn{width:100%;background:#0a0a0a;color:#fff;border:none;border-radius:13px;padding:15px;font-size:13.5px;font-weight:500;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.12s,transform 0.1s}
+    .calc-btn:hover{background:#1e1e1e}.calc-btn:active{transform:scale(0.99)}
+    .ground-shadow{width:60%;height:20px;margin:0 auto;background:radial-gradient(ellipse at center,rgba(0,0,0,0.15) 0%,transparent 70%);border-radius:50%;animation:gshadow 7s ease-in-out infinite}
+    @keyframes gshadow{0%{transform:scaleX(1);opacity:0.7}50%{transform:scaleX(0.82);opacity:0.4}100%{transform:scaleX(1);opacity:0.7}}
+    .seo-section{max-width:560px;margin:72px auto 0;padding:0 20px 100px}
+    .seo-intro{text-align:center;margin-bottom:40px}
+    .seo-intro h2{font-size:15px;font-weight:500;color:#0a0a0a;margin-bottom:8px;letter-spacing:-0.01em}
+    .seo-intro p{font-size:13px;color:#8a8a8a;line-height:1.7}
+    .seo-intro code{font-family:'SF Mono','Fira Code',monospace;font-size:12px;background:#f2f2f2;padding:2px 7px;border-radius:5px;color:#0a0a0a}
+    .faq{border-top:1px solid #ececec}.faq-item{border-bottom:1px solid #ececec}
+    .faq-q{width:100%;background:none;border:none;display:flex;align-items:center;justify-content:space-between;padding:16px 0;cursor:pointer;font-size:13.5px;font-weight:400;font-family:'Inter',sans-serif;color:#0a0a0a;text-align:left;gap:16px;transition:color 0.12s}
+    .faq-q:hover{color:#8a8a8a}
+    .faq-icon{width:16px;height:16px;flex-shrink:0;position:relative;color:#8a8a8a;transition:transform 0.25s ease}
+    .faq-icon::before,.faq-icon::after{content:'';position:absolute;background:currentColor;border-radius:2px}
+    .faq-icon::before{width:10px;height:1.5px;top:50%;left:50%;transform:translate(-50%,-50%)}
+    .faq-icon::after{width:1.5px;height:10px;top:50%;left:50%;transform:translate(-50%,-50%);transition:opacity 0.25s,transform 0.25s}
+    .faq-item.open .faq-icon{transform:rotate(45deg)}
+    .faq-a{overflow:hidden;max-height:0;transition:max-height 0.35s ease}
+    .faq-item.open .faq-a{max-height:240px}
+    .faq-a p{font-size:13px;color:#8a8a8a;line-height:1.75;padding-bottom:16px}
+    .disclaimer{font-size:11px;color:#c0c0c0;font-style:italic;text-align:center;margin-top:16px;line-height:1.6;max-width:420px;margin-left:auto;margin-right:auto}
+    footer{position:fixed;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:center;padding:16px;pointer-events:none}
+    footer span{font-size:11.5px;color:#d0d0d0}
+    @media(max-width:600px){nav{display:none}.hero-title{font-size:36px !important;margin-bottom:36px}}
+
+  </style>
+</head>
+<body>
+<header>
+  <a class="logo" href="/en/"><div class="logo-dot"><svg viewBox="0 0 11 11" fill="none"><rect x="1" y="1" width="3.5" height="2.2" rx="0.6" fill="white"/><rect x="6.5" y="1" width="3.5" height="2.2" rx="0.6" fill="white"/><rect x="1" y="4.4" width="3.5" height="1.6" rx="0.6" fill="white"/><rect x="6.5" y="4.4" width="3.5" height="1.6" rx="0.6" fill="white"/><rect x="1" y="7.2" width="3.5" height="1.6" rx="0.6" fill="white"/><rect x="6.5" y="7.2" width="3.5" height="1.6" rx="0.6" fill="white"/></svg></div><span class="logo-name">Calculer-Facile</span></a>
+  <nav>
+    <a href="/en/">% Change</a>
+    <a href="/en/vat/">VAT</a>
+    <a href="/en/discount/">Discount</a>
+    <a href="/en/bmi/" class="nav-active">BMI</a>
+    <a href="/en/loan/">Loan</a>
+    <a href="/en/salary/">Salary</a>
+    <a href="/en/compound-interest/">Interests</a>
+    <a href="/en/fuel/">Fuel</a>
+  </nav>
+</header>
+<main>
+  <p class="hero-eyebrow">Free tool &mdash; instant result</p>
+  <h1 class="hero-title" style="font-size:clamp(54px,9vw,104px)">BMI Calculator</h1>
+  <div class="float-wrap">
+    <div class="float-card">
+      <div class="card-chrome"><div class="chrome-dot d-red"></div><div class="chrome-dot d-amber"></div><div class="chrome-dot d-green"></div><span class="chrome-label">calculer-facile.fr</span></div>
+      <div class="card-body">
+        <div class="row-btns">
+          <button class="sel-btn active" id="unit-metric">kg / cm</button>
+          <button class="sel-btn" id="unit-imperial">lbs / ft</button>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+          <div class="field"><span class="field-lbl">Weight</span><div class="input-wrap"><input id="poids" type="number" placeholder="70" inputmode="decimal" autofocus /><span class="unit-mark" id="u-poids">kg</span></div></div>
+          <div class="field"><span class="field-lbl">Height</span><div class="input-wrap"><input id="taille" type="number" placeholder="175" inputmode="decimal" /><span class="unit-mark" id="u-taille">cm</span></div></div>
+        </div>
+        <div class="result-area" id="res-area"><p class="res-idle">Enter your weight and height to calculate.</p></div>
+        <button class="calc-btn" id="calc-btn">Calculate my BMI</button>
+      </div>
+    </div>
+    <div class="ground-shadow"></div>
+  </div>
+  <section class="seo-section">
+    <div class="seo-intro">
+      <h2>How to calculate BMI?</h2>
+      <p>Formula: <code>BMI = weight (kg) ÷ height² (m)</code><br>Example: 70 kg ÷ (1.75 × 1.75) = BMI of 22.9</p>
+    </div>
+    <div class="faq" role="list">
+      <div class="faq-item" role="listitem"><button class="faq-q" aria-expanded="false">What is a healthy BMI?<span class="faq-icon"></span></button><div class="faq-a"><p>WHO guidelines: <strong>under 18.5</strong> = underweight; <strong>18.5–24.9</strong> = healthy weight; <strong>25–29.9</strong> = overweight; <strong>30+</strong> = obese. These apply to adults aged 18–65.</p></div></div>
+      <div class="faq-item" role="listitem"><button class="faq-q" aria-expanded="false">Is BMI accurate?<span class="faq-icon"></span></button><div class="faq-a"><p>BMI is a screening tool, not a diagnosis. It doesn't distinguish muscle from fat. A muscular athlete may have a high BMI without being overweight. It's less reliable for elderly people, children, and pregnant women.</p></div></div>
+      <div class="faq-item" role="listitem"><button class="faq-q" aria-expanded="false">How do I convert lbs and feet to BMI?<span class="faq-icon"></span></button><div class="faq-a"><p>Our calculator converts automatically. Manual conversion: 1 lb = 0.4536 kg; 1 foot = 30.48 cm. Then apply the standard BMI formula.</p></div></div>
+    </div>
+  </section>
+</main>
+<footer><span>© 2025 calculer-facile.fr</span></footer>
+<script>
+  const poidsEl=document.getElementById('poids'),tailleEl=document.getElementById('taille'),btn=document.getElementById('calc-btn'),area=document.getElementById('res-area');
+  let isMetric=true;
+  document.getElementById('unit-metric').addEventListener('click',()=>{isMetric=true;document.getElementById('unit-metric').classList.add('active');document.getElementById('unit-imperial').classList.remove('active');document.getElementById('u-poids').textContent='kg';document.getElementById('u-taille').textContent='cm';poidsEl.placeholder='70';tailleEl.placeholder='175';reset();});
+  document.getElementById('unit-imperial').addEventListener('click',()=>{isMetric=false;document.getElementById('unit-imperial').classList.add('active');document.getElementById('unit-metric').classList.remove('active');document.getElementById('u-poids').textContent='lbs';document.getElementById('u-taille').textContent='ft';poidsEl.placeholder='154';tailleEl.placeholder='5.9';reset();});
+  function reset(){poidsEl.value='';tailleEl.value='';area.className='result-area';area.style.background='';area.innerHTML='<p class="res-idle">Enter your weight and height to calculate.</p>';}
+  function getCategory(bmi){if(bmi<18.5)return{label:'Underweight',color:'#1a6a7a',bg:'rgba(26,106,122,0.1)',pos:Math.min(bmi/18.5*18,16)};if(bmi<25)return{label:'Healthy weight',color:'#1a7a4a',bg:'rgba(26,122,74,0.1)',pos:18.5+(bmi-18.5)/(25-18.5)*6.5};if(bmi<30)return{label:'Overweight',color:'#8a6a1a',bg:'rgba(138,106,26,0.1)',pos:25+(bmi-25)/5*5};return{label:'Obese',color:'#7a2a1a',bg:'rgba(122,42,26,0.1)',pos:Math.min(30+(bmi-30)/10*30,95)};}
+  function calc(){
+    let p=parseFloat(poidsEl.value),t=parseFloat(tailleEl.value);
+    if(isNaN(p)||isNaN(t)||p<=0||t<=0){area.className='result-area';area.style.background='';area.innerHTML='<p class="res-idle">Enter valid values to calculate.</p>';return;}
+    if(!isMetric){p=p*0.453592;t=t*30.48;}
+    const tm=t/100,bmi=p/(tm*tm),bmiStr=bmi.toLocaleString('en-GB',{minimumFractionDigits:1,maximumFractionDigits:1}),cat=getCategory(bmi);
+    area.className='result-area';area.style.background=cat.bg;
+    area.innerHTML=`<div class="res-content"><span class="res-main" style="color:${cat.color};font-size:52px;">${bmiStr}</span><span class="res-pill" style="background:${cat.bg};color:${cat.color};">${cat.label}</span><div style="width:100%;height:6px;border-radius:100px;background:linear-gradient(to right,#a8d8e0 0%,#a8d8e0 18.5%,#a8d4b8 18.5%,#a8d4b8 25%,#e8d8a0 25%,#e8d8a0 30%,#e8c0a0 30%,#e8c0a0 100%);position:relative;margin-top:4px"><div style="position:absolute;top:50%;left:${cat.pos}%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;background:#0a0a0a;border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,0.3)"></div></div><p class="res-formula" style="margin-top:8px;">${p.toFixed(1)} ÷ (${tm.toFixed(2)})² = ${bmiStr}</p></div>`;
+  }
+  btn.addEventListener('click',calc);
+  [poidsEl,tailleEl].forEach(el=>el.addEventListener('keydown',e=>{if(e.key==='Enter')calc();}));
+  document.querySelectorAll('.faq-q').forEach(b=>{b.addEventListener('click',()=>{const item=b.parentElement;const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-q').setAttribute('aria-expanded','false');});if(!isOpen){item.classList.add('open');b.setAttribute('aria-expanded','true');}});});
+</script>
+</body>
+</html>
