@@ -171,7 +171,7 @@
     const sec=direction==='ex'?`Excl.: ${fmt(ex)}`:`Incl.: ${fmt(inc)}`;
     const formula=direction==='ex'?`${fmt(ex)} × (1 + ${taux}%) = ${fmt(inc)}`:`${fmt(inc)} ÷ (1 + ${taux}%) = ${fmt(ex)}`;
     area.className='result-area has-result';
-    area.innerHTML=`<div class="res-content"><span class="res-main">${fmt(main)}</span><div class="res-sub-row"><span class="res-pill">${lbl} · ${taux}%</span><span class="res-secondary">VAT: ${curr}${fmt(vat)}</span></div><p class="res-secondary" style="margin-top:2px;">${sec}</p><p class="res-formula">${formula}</p></div>`;
+    area.innerHTML=`<div class="res-content"><span class="res-main">${fmt(main)}</span><div class="res-sub-row"><span class="res-pill">${lbl} · ${taux}%</span><span class="res-secondary">VAT: ${fmt(vat)}</span></div><p class="res-secondary" style="margin-top:2px;">${sec}</p><p class="res-formula">${formula}</p></div>`;
   }
   btn.addEventListener('click',calc);
   prixEl.addEventListener('keydown',e=>{if(e.key==='Enter')calc();});
