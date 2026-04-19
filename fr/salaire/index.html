@@ -135,6 +135,10 @@
             <span class="unit-mark">€</span>
           </div>
         </div>
+        <div class="field" style="margin-bottom:14px">
+          <span class="field-lbl">Taux d'imposition (optionnel)</span>
+          <div class="input-wrap"><input id="tax-rate" type="number" placeholder="0" inputmode="decimal" min="0" max="60" /><span class="unit-mark">%</span></div>
+        </div>
         <div class="result-area" id="res-area"><p class="res-idle">Entrez un salaire pour calculer.</p></div>
         <button class="calc-btn" id="calc-btn">Calculer le salaire net</button>
       </div>
@@ -173,17 +177,28 @@
   function calc(){
     const val=parseFloat(salaireEl.value);
     if(isNaN(val)||val<=0){area.className='result-area';area.innerHTML='<p class="res-idle">Entrez un salaire valide.</p>';return;}
+    const taxRate=(parseFloat(document.getElementById('tax-rate').value)||0)/100;
     const taux=isCadre?0.75:0.78;
     const statut=isCadre?'Cadre':'Non-cadre';
     let net,brut,cotis;
     if(direction==='brut'){
       brut=val; net=val*taux; cotis=brut-net;
+      const netNet=net*(1-taxRate),taxAmt=net*taxRate;
+      const hasTax=taxRate>0;
+      const mainVal=hasTax?netNet:net;
+      const lbl=hasTax?'Net après impôt':'Salaire net';
+      const beforeTaxLine=hasTax?`<p class="res-secondary" style="margin-top:2px;">Avant impôt : ${fmt(net)} € &nbsp;·&nbsp; Impôt (${(taxRate*100).toFixed(0)}%) : −${fmt(taxAmt)} €</p>`:'';
       area.className='result-area has-result';
-      area.innerHTML=`<div class="res-content"><span class="res-main">${fmt(net)}\u00a0€</span><div class="res-sub-row"><span class="res-pill">Salaire net · ${statut}</span><span class="res-secondary">Cotisations\u00a0: ${fmt(cotis)}\u00a0€</span></div><p class="res-secondary" style="margin-top:2px;">Brut\u00a0: ${fmt(brut)}\u00a0€ &nbsp;·&nbsp; Taux charges\u00a0: ${((1-taux)*100).toFixed(0)}\u00a0%</p><p class="res-formula">${fmt(brut)}\u00a0€ × ${taux} = ${fmt(net)}\u00a0€ net</p></div>`;
+      area.innerHTML=`<div class="res-content"><span class="res-main">${fmt(mainVal)} €</span><div class="res-sub-row"><span class="res-pill">${lbl} · ${statut}</span><span class="res-secondary">Cotisations : ${fmt(cotis)} €</span></div>${beforeTaxLine}<p class="res-secondary" style="margin-top:2px;">Brut : ${fmt(brut)} € &nbsp;·&nbsp; Taux charges : ${((1-taux)*100).toFixed(0)} %</p><p class="res-formula">${fmt(brut)} € × ${taux}${hasTax?' × '+(1-taxRate):''} = ${fmt(mainVal)} €</p></div>`;
     }else{
       net=val; brut=val/taux; cotis=brut-net;
+      const netNet=net*(1-taxRate),taxAmt=net*taxRate;
+      const hasTax=taxRate>0;
+      const mainVal=hasTax?netNet:brut;
+      const lbl=hasTax?'Net après impôt':'Salaire brut';
+      const beforeTaxLine=hasTax?`<p class="res-secondary" style="margin-top:2px;">Net avant impôt : ${fmt(net)} € &nbsp;·&nbsp; Impôt (${(taxRate*100).toFixed(0)}%) : −${fmt(taxAmt)} €</p>`:'';
       area.className='result-area has-result';
-      area.innerHTML=`<div class="res-content"><span class="res-main">${fmt(brut)}\u00a0€</span><div class="res-sub-row"><span class="res-pill">Salaire brut · ${statut}</span><span class="res-secondary">Cotisations\u00a0: ${fmt(cotis)}\u00a0€</span></div><p class="res-secondary" style="margin-top:2px;">Net\u00a0: ${fmt(net)}\u00a0€ &nbsp;·&nbsp; Taux charges\u00a0: ${((1-taux)*100).toFixed(0)}\u00a0%</p><p class="res-formula">${fmt(net)}\u00a0€ ÷ ${taux} = ${fmt(brut)}\u00a0€ brut</p></div>`;
+      area.innerHTML=`<div class="res-content"><span class="res-main">${fmt(mainVal)} €</span><div class="res-sub-row"><span class="res-pill">${lbl} · ${statut}</span><span class="res-secondary">Cotisations : ${fmt(cotis)} €</span></div>${beforeTaxLine}<p class="res-secondary" style="margin-top:2px;">Net : ${fmt(net)} € &nbsp;·&nbsp; Taux charges : ${((1-taux)*100).toFixed(0)} %</p><p class="res-formula">${fmt(net)} € ÷ ${taux} = ${fmt(brut)} € brut</p></div>`;
     }
   }
   btn.addEventListener('click',calc);
