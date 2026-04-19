@@ -127,6 +127,10 @@
           <span class="field-lbl" id="input-lbl">Gross monthly salary</span>
           <div class="input-wrap"><input id="salaire" type="number" placeholder="3 000" inputmode="decimal" autofocus /><span class="unit-mark">€</span></div>
         </div>
+        <div class="field" style="margin-bottom:14px">
+          <span class="field-lbl">Income tax rate (optional)</span>
+          <div class="input-wrap"><input id="tax-rate" type="number" placeholder="0" inputmode="decimal" min="0" max="60" /><span class="unit-mark">%</span></div>
+        </div>
         <div class="result-area" id="res-area"><p class="res-idle">Enter a salary to calculate.</p></div>
         <button class="calc-btn" id="calc-btn">Calculate net salary</button>
       </div>
@@ -158,6 +162,7 @@
   function calc(){
     const val=parseFloat(salaireEl.value);
     if(isNaN(val)||val<=0){area.className='result-area';area.style.background='';area.innerHTML='<p class="res-idle">Enter a valid salary.</p>';return;}
+    const taxRate=(parseFloat(document.getElementById('tax-rate').value)||0)/100;
     const tNC=rateNC,tC=rateC;
     let grossNC,netNC,grossC,netC,cotisNC,cotisC;
     if(direction==='gross'){
@@ -167,14 +172,20 @@
       grossNC=val/tNC;netNC=val;cotisNC=grossNC-netNC;
       grossC=val/tC;netC=val;cotisC=grossC-netC;
     }
-    const main=direction==='gross'?netNC:grossNC;
-    const lbl=direction==='gross'?'Net salary':'Gross salary';
+    const netNetNC=netNC*(1-taxRate);
+    const taxAmtNC=netNC*taxRate;
+    const hasTax=taxRate>0;
+    const mainVal=direction==='gross'?(hasTax?netNetNC:netNC):(hasTax?netNetNC:grossNC);
+    const lbl=direction==='gross'?(hasTax?'Net salary (after tax)':'Net salary (before tax)'):(hasTax?'Net salary (after tax)':'Gross salary');
     area.className='result-area';area.style.background='#eaf2ec';
+    const beforeTaxLine=hasTax&&direction==='gross'?`<p class="res-secondary" style="margin-top:2px;">Before tax: ${currSym}${fmt(netNC)} &nbsp;·&nbsp; Tax (${(taxRate*100).toFixed(0)}%): −${currSym}${fmt(taxAmtNC)}</p>`:'';
+    const beforeTaxLineNet=hasTax&&direction==='net'?`<p class="res-secondary" style="margin-top:2px;">Net before tax: ${currSym}${fmt(netNC)} &nbsp;·&nbsp; Tax (${(taxRate*100).toFixed(0)}%): −${currSym}${fmt(taxAmtNC)}</p>`:'';
     area.innerHTML=`<div class="res-content">
-      <span class="res-main" style="color:#1a4a2a;">${currSym}${fmt(main)}</span>
+      <span class="res-main" style="color:#1a4a2a;">${currSym}${fmt(mainVal)}</span>
       <div class="res-sub-row"><span class="res-pill" style="background:rgba(26,74,42,0.12);color:#1a4a2a;">${lbl} · ${countryName}</span><span class="res-secondary">Contributions: ${currSym}${fmt(cotisNC)}</span></div>
-      <p class="res-secondary" style="margin-top:4px;font-size:10px;color:#c0c0c0;">Non-executive: ${currSym}${fmt(direction==='gross'?netNC:grossNC)} &nbsp;·&nbsp; Executive: ${currSym}${fmt(direction==='gross'?netC:grossC)}</p>
-      <p class="res-formula">${direction==='gross'?`${currSym}${fmt(grossNC)} × ${tNC} = ${currSym}${fmt(netNC)}`:`${currSym}${fmt(netNC)} ÷ ${tNC} = ${currSym}${fmt(grossNC)}`}</p>
+      ${beforeTaxLine}${beforeTaxLineNet}
+      <p class="res-secondary" style="margin-top:4px;font-size:10px;color:#c0c0c0;">Non-exec: ${currSym}${fmt(direction==='gross'?netNC:grossNC)} &nbsp;·&nbsp; Exec: ${currSym}${fmt(direction==='gross'?netC:grossC)}</p>
+      <p class="res-formula">${direction==='gross'?`${currSym}${fmt(grossNC)} × ${tNC}${hasTax?' × '+(1-taxRate):''}  = ${currSym}${fmt(mainVal)}`:`${currSym}${fmt(netNC)} ÷ ${tNC} = ${currSym}${fmt(grossNC)}`}</p>
     </div>`;
   }
   btn.addEventListener('click',calc);
