@@ -2,34 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Calculate Percentage Change — Increase & Decrease Calculator | Calculer-Facile</title>
-  <meta name="description" content="Calculate instantly the percentage change between two values: increase, decrease or variation. Free tool, instant result, no signup required.">
-  <meta name="keywords" content="percentage change calculator, calculate percent change, percentage increase decrease, rate of change, percent difference calculator">
+  <title>VAT Calculator — Price ex-VAT to inc-VAT | Calculer-Facile</title>
+  <meta name="description" content="Calculate VAT instantly. Convert prices excluding VAT to including VAT or vice versa. Supports €, $ and £. Multiple VAT rates available.">
+  <meta name="keywords" content="VAT calculator, calculate VAT, price excluding VAT, price including VAT, tax calculator, sales tax, GST calculator">
   <meta name="robots" content="index, follow">
-  <meta name="author" content="Calculer-Facile">
-  <link rel="canonical" href="https://calculer-facile.fr/en/">
-  <link rel="alternate" hreflang="en" href="https://calculer-facile.fr/en/">
-  <link rel="alternate" hreflang="fr" href="https://calculer-facile.fr/fr/">
-  <link rel="alternate" hreflang="x-default" href="https://calculer-facile.fr/en/">
+  <link rel="canonical" href="https://calculer-facile.fr/en/vat/">
+  <link rel="alternate" hreflang="en" href="https://calculer-facile.fr/en/vat/"/>
+  <link rel="alternate" hreflang="fr" href="https://calculer-facile.fr/fr/tva/"/>
   <link rel="icon" type="image/png" href="/favicon.png">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Percentage Change Calculator | Calculer-Facile">
-  <meta property="og:description" content="Calculate increase or decrease between two values instantly. Free tool.">
-  <meta property="og:url" content="https://calculer-facile.fr/en/">
-  <meta property="og:site_name" content="Calculer-Facile">
-  <meta property="og:locale" content="en_GB">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Percentage Change Calculator | Calculer-Facile">
-  <meta name="twitter:description" content="Increase or decrease between two values in one click. Free.">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Percentage Change Calculator","url":"https://calculer-facile.fr/en/","description":"Calculates the percentage change between two values. Shows whether it is an increase or decrease.","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","inLanguage":"en","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"publisher":{"@type":"Organization","name":"Calculer-Facile","url":"https://calculer-facile.fr"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you calculate percentage change?","acceptedAnswer":{"@type":"Answer","text":"Formula: ((new value - old value) / old value) × 100. A positive result means an increase, a negative result means a decrease. Example: from 80 to 100 → (100-80)/80 × 100 = +25%."}},{"@type":"Question","name":"What is the difference between percentage change and percentage difference?","acceptedAnswer":{"@type":"Answer","text":"Percentage change measures the change from a starting value to an ending value (directional). Percentage difference compares two values without a defined starting point (non-directional). Use percentage change when tracking evolution over time."}},{"@type":"Question","name":"How do you calculate a percentage decrease?","acceptedAnswer":{"@type":"Answer","text":"Same formula: (new - old) / old × 100. If the result is negative, it indicates a decrease. Example: from 200 to 150 → (150-200)/200 × 100 = -25%."}}]}</script>
+  <meta property="og:title" content="VAT Calculator | Calculer-Facile">
+  <meta property="og:description" content="Convert ex-VAT to inc-VAT or inc-VAT to ex-VAT instantly. €, $, £ supported.">
+  <meta property="og:url" content="https://calculer-facile.fr/en/vat/">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"VAT Calculator","url":"https://calculer-facile.fr/en/vat/","description":"Converts a price excluding VAT to including VAT, or vice versa. Supports multiple currencies and VAT rates.","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","inLanguage":"en","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"publisher":{"@type":"Organization","name":"Calculer-Facile","url":"https://calculer-facile.fr"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you calculate VAT?","acceptedAnswer":{"@type":"Answer","text":"To add VAT: multiply the ex-VAT price by (1 + VAT rate). Example with 20%: £100 × 1.20 = £120 inc. VAT. To remove VAT: divide the inc-VAT price by (1 + VAT rate): £120 ÷ 1.20 = £100 ex. VAT."}},{"@type":"Question","name":"What is the VAT rate in the UK?","acceptedAnswer":{"@type":"Answer","text":"The standard VAT rate in the UK is 20%. A reduced rate of 5% applies to some goods (domestic energy, children's car seats). Zero-rated items (0%) include most food, books, and children's clothing."}},{"@type":"Question","name":"What is the difference between VAT and sales tax?","acceptedAnswer":{"@type":"Answer","text":"VAT (used in Europe and many countries) is collected at each stage of production. Sales tax (used in the US) is only collected at the final point of sale. Both add a percentage tax to the price of goods and services."}}]}</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{--black:#0a0a0a;--white:#ffffff;--gray:#8a8a8a;--light:#f2f2f2;--up:#1a7a4a;--dn:#b02020}
+    :root{--black:#0a0a0a;--white:#ffffff;--gray:#8a8a8a;--light:#f2f2f2;--acc:#1a4a7a;--acc-bg:#eef3fa}
     html,body{background:var(--white);color:var(--black);font-family:'Inter',-apple-system,sans-serif;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden}
     header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 28px;background:rgba(255,255,255,0.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
     .logo{display:flex;align-items:center;gap:7px;text-decoration:none;color:var(--black)}
@@ -44,7 +37,7 @@
     main{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:140px 20px 80px}
     .hero-eyebrow{font-size:13px;color:var(--gray);letter-spacing:0.01em;margin-bottom:12px;text-align:center}
     .hero-title{font-size:clamp(54px,9vw,104px);font-weight:300;letter-spacing:-0.035em;line-height:1.0;text-align:center;color:var(--black);margin-bottom:52px;user-select:none}
-    .float-wrap{position:relative;width:400px;max-width:calc(100vw - 40px)}
+    .float-wrap{position:relative;width:420px;max-width:calc(100vw - 40px)}
     .float-card{background:var(--white);border-radius:26px;border:1px solid rgba(0,0,0,0.08);overflow:hidden;box-shadow:0 1px 1px rgba(0,0,0,0.03),0 4px 8px rgba(0,0,0,0.05),0 12px 24px rgba(0,0,0,0.07),0 32px 56px rgba(0,0,0,0.09),0 64px 96px rgba(0,0,0,0.07);animation:levitate 7s ease-in-out infinite;transform-origin:center bottom}
     @keyframes levitate{0%{transform:translateY(0px) rotateX(0deg)}50%{transform:translateY(-12px) rotateX(1deg)}100%{transform:translateY(0px) rotateX(0deg)}}
     .card-chrome{display:flex;align-items:center;gap:6px;padding:14px 18px 10px;border-bottom:1px solid rgba(0,0,0,0.05)}
@@ -52,26 +45,26 @@
     .d-red{background:#ff5f57}.d-amber{background:#ffbd2e}.d-green{background:#28c840}
     .chrome-label{font-size:11px;color:#ccc;margin-left:auto;letter-spacing:0.06em;text-transform:uppercase}
     .card-body{padding:20px}
-    .inputs-row{display:grid;grid-template-columns:1fr 28px 1fr;align-items:end;gap:8px;margin-bottom:14px}
-    .field{display:flex;flex-direction:column;gap:5px;align-items:center}
+    .row-btns{display:flex;gap:8px;margin-bottom:12px}
+    .row-lbl{font-size:9px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#c0c0c0;text-align:center;display:block;margin-bottom:8px}
+    .sel-btn{flex:1;background:#f7f7f7;border:1.5px solid #ececec;border-radius:10px;padding:9px 6px;font-size:12.5px;font-weight:500;font-family:'Inter',sans-serif;color:var(--gray);cursor:pointer;transition:all 0.14s;text-align:center}
+    .sel-btn:hover{background:#f0f0f0;color:var(--black)}
+    .sel-btn.active{background:var(--black);border-color:var(--black);color:var(--white)}
+    .field{display:flex;flex-direction:column;gap:5px;align-items:center;margin-bottom:14px}
     .field-lbl{font-size:9px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#c0c0c0;text-align:center}
-    .field input{width:100%;background:#f7f7f7;border:1.5px solid #ececec;border-radius:13px;padding:13px 14px;font-size:24px;font-weight:300;font-family:'Inter',sans-serif;color:var(--black);outline:none;text-align:center;transition:border-color 0.14s,background 0.14s;-moz-appearance:textfield}
+    .field input{width:100%;background:#f7f7f7;border:1.5px solid #ececec;border-radius:13px;padding:13px 14px;font-size:28px;font-weight:300;font-family:'Inter',sans-serif;color:var(--black);outline:none;text-align:center;transition:border-color 0.14s,background 0.14s;-moz-appearance:textfield}
     .field input::-webkit-outer-spin-button,.field input::-webkit-inner-spin-button{-webkit-appearance:none}
     .field input::placeholder{color:#d0d0d0}.field input:focus{border-color:var(--black);background:#fff}
-    .arrow-mid{display:flex;align-items:center;justify-content:center;padding-bottom:13px}
-    .arrow-mid svg{width:14px;height:14px;stroke:#d0d0d0;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-    .result-area{background:#f7f7f7;border-radius:16px;padding:16px 18px;margin-bottom:14px;min-height:70px;display:flex;align-items:center;justify-content:center;transition:background 0.25s}
-    .result-area.is-up{background:#ebf5f0}.result-area.is-down{background:#fdf0f0}
+    .result-area{background:#f7f7f7;border-radius:16px;padding:16px 18px;margin-bottom:14px;min-height:70px;display:flex;align-items:center;justify-content:center;transition:background 0.25s;text-align:center}
+    .result-area.has-result{background:var(--acc-bg)}
     .res-idle{font-size:12px;color:#ccc;line-height:1.6;text-align:center}
-    .res-content{width:100%;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
-    .res-pct{font-size:42px;font-weight:300;letter-spacing:-0.04em;color:var(--black);line-height:1}
-    .res-pct.up{color:var(--up)}.res-pct.down{color:var(--dn)}
-    .res-meta{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:8px}
-    .res-pill{font-size:10px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(0,0,0,0.06);color:var(--gray)}
-    .res-pill.up{background:rgba(26,122,74,0.12);color:var(--up)}.res-pill.down{background:rgba(176,32,32,0.12);color:var(--dn)}
-    .res-diff{font-size:11px;color:#bbb}
-    .res-formula{font-size:11px;font-style:italic;color:#c8c8c8;text-align:center;margin-top:2px;line-height:1.5}
-    .calc-btn{width:100%;background:var(--black);color:var(--white);border:none;border-radius:13px;padding:15px;font-size:13.5px;font-weight:500;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.12s,transform 0.1s;letter-spacing:0.005em}
+    .res-content{width:100%;display:flex;flex-direction:column;align-items:center;gap:6px}
+    .res-main{font-size:42px;font-weight:300;letter-spacing:-0.04em;color:var(--acc);line-height:1}
+    .res-sub-row{display:flex;gap:10px;align-items:center;justify-content:center}
+    .res-pill{font-size:10px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(26,74,122,0.12);color:var(--acc)}
+    .res-secondary{font-size:11px;color:#bbb}
+    .res-formula{font-size:11px;font-style:italic;color:#c8c8c8;text-align:center;margin-top:2px}
+    .calc-btn{width:100%;background:var(--black);color:var(--white);border:none;border-radius:13px;padding:15px;font-size:13.5px;font-weight:500;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.12s,transform 0.1s}
     .calc-btn:hover{background:#1e1e1e}.calc-btn:active{transform:scale(0.99)}
     .ground-shadow{width:60%;height:20px;margin:0 auto;background:radial-gradient(ellipse at center,rgba(0,0,0,0.15) 0%,transparent 70%);border-radius:50%;animation:gshadow 7s ease-in-out infinite}
     @keyframes gshadow{0%{transform:scaleX(1);opacity:0.7}50%{transform:scaleX(0.82);opacity:0.4}100%{transform:scaleX(1);opacity:0.7}}
@@ -89,7 +82,7 @@
     .faq-icon::after{width:1.5px;height:10px;top:50%;left:50%;transform:translate(-50%,-50%);transition:opacity 0.25s,transform 0.25s}
     .faq-item.open .faq-icon{transform:rotate(45deg)}
     .faq-a{overflow:hidden;max-height:0;transition:max-height 0.35s ease}
-    .faq-item.open .faq-a{max-height:200px}
+    .faq-item.open .faq-a{max-height:220px}
     .faq-a p{font-size:13px;color:var(--gray);line-height:1.75;padding-bottom:16px}
     footer{position:fixed;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:center;padding:16px;pointer-events:none}
     footer span{font-size:11.5px;color:#d0d0d0}
@@ -100,8 +93,8 @@
 <header>
   <a class="logo" href="/en/"><div class="logo-dot"><svg viewBox="0 0 11 11" fill="none"><rect x="1" y="1" width="3.5" height="2.2" rx="0.6" fill="white"/><rect x="6.5" y="1" width="3.5" height="2.2" rx="0.6" fill="white"/><rect x="1" y="4.4" width="3.5" height="1.6" rx="0.6" fill="white"/><rect x="6.5" y="4.4" width="3.5" height="1.6" rx="0.6" fill="white"/><rect x="1" y="7.2" width="3.5" height="1.6" rx="0.6" fill="white"/><rect x="6.5" y="7.2" width="3.5" height="1.6" rx="0.6" fill="white"/></svg></div><span class="logo-name">Calculer-Facile</span></a>
   <nav>
-    <a href="/en/" class="nav-active">% Change</a>
-    <a href="/en/vat/">VAT</a>
+    <a href="/en/">% Change</a>
+    <a href="/en/vat/" class="nav-active">VAT</a>
     <a href="/en/discount/">Discount</a>
     <a href="/en/bmi/">BMI</a>
     <a href="/en/loan/">Loan</a>
@@ -112,56 +105,76 @@
 </header>
 <main>
   <p class="hero-eyebrow">Free tool &mdash; instant result</p>
-  <h1 class="hero-title">Percentage change</h1>
+  <h1 class="hero-title">VAT Calculator</h1>
   <div class="float-wrap">
     <div class="float-card">
       <div class="card-chrome"><div class="chrome-dot d-red"></div><div class="chrome-dot d-amber"></div><div class="chrome-dot d-green"></div><span class="chrome-label">calculer-facile.fr</span></div>
       <div class="card-body">
-        <div class="inputs-row">
-          <div class="field"><span class="field-lbl">Initial value</span><input id="v1" type="number" placeholder="100" inputmode="decimal" autofocus /></div>
-          <div class="arrow-mid"><svg viewBox="0 0 14 14"><path d="M2 7h10M8 3l4 4-4 4"/></svg></div>
-          <div class="field"><span class="field-lbl">Final value</span><input id="v2" type="number" placeholder="125" inputmode="decimal" /></div>
+        <!-- VAT rate -->
+        <span class="row-lbl">VAT / Tax rate</span>
+        <div class="row-btns">
+          <button class="sel-btn active" data-taux="20">20%</button>
+          <button class="sel-btn" data-taux="10">10%</button>
+          <button class="sel-btn" data-taux="5">5%</button>
+          <button class="sel-btn" data-taux="5.5">5.5%</button>
         </div>
-        <div class="result-area" id="res-area"><p class="res-idle">Enter two values and press Calculate.</p></div>
-        <button class="calc-btn" id="calc-btn">Calculate the change</button>
+        <!-- Direction -->
+        <div class="row-btns" style="margin-top:12px">
+          <button class="sel-btn active" id="dir-ex">Ex-VAT → Inc-VAT</button>
+          <button class="sel-btn" id="dir-inc">Inc-VAT → Ex-VAT</button>
+        </div>
+        <div class="field" style="margin-top:14px">
+          <span class="field-lbl" id="input-lbl">Price excl. VAT (€)</span>
+          <input id="prix" type="number" placeholder="100.00" inputmode="decimal" autofocus />
+        </div>
+        <p style="font-size:11px;color:#c8c8c8;text-align:center;margin-top:6px;margin-bottom:10px;font-style:italic;">Works with any currency — €, $, £, CHF…</p>
+        <div class="result-area" id="res-area"><p class="res-idle">Enter a price and press Calculate.</p></div>
+        <button class="calc-btn" id="calc-btn">Calculate VAT</button>
       </div>
     </div>
     <div class="ground-shadow"></div>
   </div>
   <section class="seo-section">
     <div class="seo-intro">
-      <h2>How to calculate percentage change?</h2>
-      <p>Formula: <code>(final value − initial value) ÷ initial value × 100</code><br>A positive result means an increase, negative means a decrease.</p>
+      <h2>How to calculate VAT?</h2>
+      <p>To add VAT: <code>Price excl. × (1 + rate)</code><br>To remove VAT: <code>Price incl. ÷ (1 + rate)</code></p>
     </div>
     <div class="faq" role="list">
-      <div class="faq-item" role="listitem"><button class="faq-q" aria-expanded="false">What is the formula for percentage change?<span class="faq-icon" aria-hidden="true"></span></button><div class="faq-a"><p>Formula: <strong>(final − initial) ÷ initial × 100</strong>. A positive result is an increase, negative is a decrease. The initial value cannot be zero.</p></div></div>
-      <div class="faq-item" role="listitem"><button class="faq-q" aria-expanded="false">How do you calculate a percentage increase?<span class="faq-icon" aria-hidden="true"></span></button><div class="faq-a"><p>Subtract the old value from the new, divide by the old value, multiply by 100. Example: from £80 to £100 → (100−80) ÷ 80 × 100 = <strong>+25%</strong>.</p></div></div>
-      <div class="faq-item" role="listitem"><button class="faq-q" aria-expanded="false">How do you calculate a percentage decrease?<span class="faq-icon" aria-hidden="true"></span></button><div class="faq-a"><p>Same formula. Example: from $200 to $150 → (150−200) ÷ 200 × 100 = <strong>−25%</strong>. The negative result indicates a decrease.</p></div></div>
-      <div class="faq-item" role="listitem"><button class="faq-q" aria-expanded="false">What is the difference between percentage change and percentage difference?<span class="faq-icon" aria-hidden="true"></span></button><div class="faq-a"><p>Percentage change is directional — it measures change from a starting value. Percentage difference compares two values without a defined order. Use percentage change when tracking evolution over time (prices, sales, grades).</p></div></div>
-      <div class="faq-item" role="listitem"><button class="faq-q" aria-expanded="false">What are common uses of percentage change?<span class="faq-icon" aria-hidden="true"></span></button><div class="faq-a"><p>It's used everywhere: salary raise, rent increase, stock price variation, grade progression, revenue growth, population change, inflation rate, exchange rate variation, etc.</p></div></div>
+      <div class="faq-item" role="listitem"><button class="faq-q" aria-expanded="false">How do you add 20% VAT to a price?<span class="faq-icon" aria-hidden="true"></span></button><div class="faq-a"><p>Multiply the ex-VAT price by 1.20. Example: £100 × 1.20 = <strong>£120 inc. VAT</strong>. The VAT amount is £20. To reverse it, divide the inc-VAT price by 1.20.</p></div></div>
+      <div class="faq-item" role="listitem"><button class="faq-q" aria-expanded="false">What is the VAT rate in the UK?<span class="faq-icon" aria-hidden="true"></span></button><div class="faq-a"><p>The UK standard VAT rate is <strong>20%</strong>. A reduced rate of <strong>5%</strong> applies to domestic energy and children's car seats. Most food, books and children's clothes are <strong>zero-rated (0%)</strong>.</p></div></div>
+      <div class="faq-item" role="listitem"><button class="faq-q" aria-expanded="false">What is the difference between VAT and sales tax?<span class="faq-icon" aria-hidden="true"></span></button><div class="faq-a"><p>VAT (Europe, UK) is collected at every stage of production. US sales tax is only added at the final point of sale. Both add a percentage to the consumer price — this calculator works for both.</p></div></div>
+      <div class="faq-item" role="listitem"><button class="faq-q" aria-expanded="false">What are the VAT rates in Europe?<span class="faq-icon" aria-hidden="true"></span></button><div class="faq-a"><p>Standard rates vary: France 20%, Germany 19%, Spain 21%, Italy 22%, Netherlands 21%, Belgium 21%, Portugal 23%, Switzerland 8.1% (not EU). All EU countries have reduced rates for essential goods.</p></div></div>
     </div>
   </section>
 </main>
 <footer><span>© 2025 calculer-facile.fr</span></footer>
 <script>
-  const v1=document.getElementById('v1'),v2=document.getElementById('v2'),btn=document.getElementById('calc-btn'),area=document.getElementById('res-area');
-  function fmt(n){return n.toLocaleString('en-GB',{maximumFractionDigits:2});}
+  let taux=20, direction='ex';
+  const prixEl=document.getElementById('prix'),btn=document.getElementById('calc-btn'),area=document.getElementById('res-area'),inpLbl=document.getElementById('input-lbl');
+
+
+  document.querySelectorAll('[data-taux]').forEach(b=>{b.addEventListener('click',()=>{document.querySelectorAll('[data-taux]').forEach(x=>x.classList.remove('active'));b.classList.add('active');taux=parseFloat(b.dataset.taux);reset();});});
+  document.getElementById('dir-ex').addEventListener('click',()=>{direction='ex';document.getElementById('dir-ex').classList.add('active');document.getElementById('dir-inc').classList.remove('active');updateLabel();reset();});
+  document.getElementById('dir-inc').addEventListener('click',()=>{direction='inc';document.getElementById('dir-inc').classList.add('active');document.getElementById('dir-ex').classList.remove('active');updateLabel();reset();});
+
+  function updateLabel(){inpLbl.textContent=direction==='ex'?'Price excl. tax':'Price incl. tax';}
+  function reset(){prixEl.value='';area.className='result-area';area.innerHTML='<p class="res-idle">Enter a price and press Calculate.</p>';}
+  function fmt(n){return n.toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2});}
+
   function calc(){
-    const a=parseFloat(v1.value),b=parseFloat(v2.value);
-    if(isNaN(a)||isNaN(b)){area.className='result-area';area.innerHTML='<p class="res-idle">Enter two values to calculate.</p>';return;}
-    if(a===0){area.className='result-area';area.innerHTML='<p class="res-idle">The initial value cannot be zero.</p>';return;}
-    const diff=b-a,p=(diff/a)*100;
-    const pStr=(p>0?'+':'')+p.toLocaleString('en-GB',{maximumFractionDigits:2})+'%';
-    const dStr=(diff>0?'+':'')+fmt(diff);
-    let cls,pCls,pillCls,label;
-    if(diff>0){cls='is-up';pCls='up';pillCls='up';label='Increase';}
-    else if(diff<0){cls='is-down';pCls='down';pillCls='down';label='Decrease';}
-    else{cls='';pCls='';pillCls='';label='Stable';}
-    area.className='result-area '+cls;
-    area.innerHTML=`<div class="res-content"><span class="res-pct ${pCls}">${pStr}</span><div class="res-meta"><span class="res-pill ${pillCls}">${label}</span><span class="res-diff">${dStr}</span></div><p class="res-formula">(${fmt(b)} − ${fmt(a)}) ÷ ${fmt(a)} × 100</p></div>`;
+    const val=parseFloat(prixEl.value);
+    if(isNaN(val)||val<0){area.className='result-area';area.innerHTML='<p class="res-idle">Please enter a valid price.</p>';return;}
+    let ex,inc,vat;
+    if(direction==='ex'){ex=val;vat=val*taux/100;inc=val+vat;}else{inc=val;ex=val/(1+taux/100);vat=inc-ex;}
+    const main=direction==='ex'?inc:ex;
+    const lbl=direction==='ex'?'Price incl. tax':'Price excl. tax';
+    const sec=direction==='ex'?`Excl.: ${fmt(ex)}`:`Incl.: ${fmt(inc)}`;
+    const formula=direction==='ex'?`${fmt(ex)} × (1 + ${taux}%) = ${fmt(inc)}`:`${fmt(inc)} ÷ (1 + ${taux}%) = ${fmt(ex)}`;
+    area.className='result-area has-result';
+    area.innerHTML=`<div class="res-content"><span class="res-main">${fmt(main)}</span><div class="res-sub-row"><span class="res-pill">${lbl} · ${taux}%</span><span class="res-secondary">VAT: ${fmt(vat)}</span></div><p class="res-secondary" style="margin-top:2px;">${sec}</p><p class="res-formula">${formula}</p></div>`;
   }
   btn.addEventListener('click',calc);
-  [v1,v2].forEach(el=>el.addEventListener('keydown',e=>{if(e.key==='Enter')calc();}));
+  prixEl.addEventListener('keydown',e=>{if(e.key==='Enter')calc();});
   document.querySelectorAll('.faq-q').forEach(b=>{b.addEventListener('click',()=>{const item=b.parentElement;const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-q').setAttribute('aria-expanded','false');});if(!isOpen){item.classList.add('open');b.setAttribute('aria-expanded','true');}});});
 </script>
 </body>
