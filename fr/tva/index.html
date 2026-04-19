@@ -26,6 +26,7 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Comment calculer la TVA à 20% ?","acceptedAnswer":{"@type":"Answer","text":"Pour calculer la TVA à 20% : multipliez le prix HT par 0,20. Exemple : 100 € HT × 0,20 = 20 € de TVA. Le prix TTC est donc 120 €. Pour passer de TTC à HT : divisez par 1,20."}},{"@type":"Question","name":"Comment passer d'un prix HT à TTC ?","acceptedAnswer":{"@type":"Answer","text":"Multipliez le prix HT par (1 + taux TVA). Avec une TVA à 20% : prix TTC = prix HT × 1,20. Avec 10% : × 1,10. Avec 5,5% : × 1,055."}},{"@type":"Question","name":"Quelle TVA s'applique aux travaux ?","acceptedAnswer":{"@type":"Answer","text":"Les travaux de rénovation dans les logements de plus de 2 ans sont soumis à la TVA à 10%. Les travaux d'amélioration énergétique peuvent bénéficier du taux de 5,5%."}},{"@type":"Question","name":"Comment calculer le prix HT à partir du TTC ?","acceptedAnswer":{"@type":"Answer","text":"Divisez le prix TTC par (1 + taux TVA). Avec une TVA à 20% : prix HT = prix TTC ÷ 1,20. Exemple : 120 € TTC ÷ 1,20 = 100 € HT."}}]}
   </script>
+  <link rel="icon" type="image/png" href="/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,11 +45,7 @@
     nav a:hover { background:var(--light); }
     nav a.nav-active { background:var(--black); color:var(--white); border-radius:100px; padding:8px 18px; font-weight:500; }
     nav a.nav-active:hover { background:#282828; }
-    main {
-      display:flex; flex-direction:column;
-      align-items:center; justify-content:flex-start;
-      padding:140px 20px 80px;
-    }
+    main { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:100px 20px 60px; }
     .hero-eyebrow { font-size:13px; color:var(--gray); letter-spacing:0.01em; margin-bottom:12px; text-align:center; }
     .hero-title { font-size:clamp(54px,9vw,104px); font-weight:300; letter-spacing:-0.035em; line-height:1.0; text-align:center; color:var(--black); margin-bottom:52px; user-select:none; }
     .float-wrap { position:relative; width:420px; max-width:calc(100vw - 40px); }
@@ -76,11 +73,7 @@
     .result-area.has-result{background:var(--acc-bg)}
     .res-idle{font-size:12px;color:#ccc;line-height:1.6;text-align:center}
     .res-content{width:100%;display:flex;flex-direction:column;align-items:center;gap:6px}
-    .res-main {
-      display:flex; flex-direction:column;
-      align-items:center; justify-content:flex-start;
-      padding:140px 20px 80px;
-    }
+    .res-main{font-size:42px;font-weight:300;letter-spacing:-0.04em;color:var(--acc);line-height:1}
     .res-sub-row{display:flex;gap:10px;align-items:center;justify-content:center}
     .res-pill{font-size:10px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(26,74,122,0.12);color:var(--acc)}
     .res-secondary{font-size:11px;color:#bbb}
@@ -120,6 +113,8 @@
     <a href="/fr/remise/">Remise</a>
     <a href="/fr/imc/">IMC</a>
     <a href="/fr/credit/">Crédit</a>
+    <a href="/fr/salaire/">Salaire</a>
+    <a href="/fr/interets/">Intérêts</a>
     <a href="/fr/carburant/">Carburant</a>
   </nav>
 </header>
