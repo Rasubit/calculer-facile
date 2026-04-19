@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Calculer Salaire Brut en Net — Simulation Fiche de Paie | Calculer-Facile</title>
+  <meta name="description" content="Convertissez instantanément un salaire brut en net ou net en brut. Charges salariales, cotisations : simulation complète pour cadre et non-cadre.">
+  <meta name="keywords" content="calculer salaire brut en net, salaire net en brut, simulation salaire, fiche de paie, charges salariales, cotisations sociales, salaire mensuel">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Calculer-Facile">
+  <link rel="canonical" href="https://calculer-facile.fr/fr/salaire/">
+  <link rel="alternate" hreflang="fr" href="https://calculer-facile.fr/fr/salaire/"/>
+  <link rel="alternate" hreflang="en" href="https://calculer-facile.fr/en/salary/"/>
+  <link rel="alternate" hreflang="x-default" href="https://calculer-facile.fr/fr/salaire/"/>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Calculer Salaire Brut en Net | Calculer-Facile">
+  <meta property="og:description" content="Convertissez brut en net ou net en brut instantanément. Simulation complète cadre / non-cadre.">
+  <meta property="og:url" content="https://calculer-facile.fr/fr/salaire/">
+  <meta property="og:site_name" content="Calculer-Facile">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Salaire Brut en Net | Calculer-Facile">
+  <meta name="twitter:description" content="Simulation salaire brut / net instantanée. Gratuit.">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculateur Salaire Brut Net","url":"https://calculer-facile.fr/fr/salaire/","description":"Convertit un salaire brut mensuel en salaire net, ou un salaire net en brut, selon le statut cadre ou non-cadre.","applicationCategory":"FinanceApplication","operatingSystem":"Web","inLanguage":"fr","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"publisher":{"@type":"Organization","name":"Calculer-Facile","url":"https://calculer-facile.fr"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Comment calculer le salaire net à partir du brut ?","acceptedAnswer":{"@type":"Answer","text":"En France, le salaire net est environ 78% du brut pour un non-cadre et 75% pour un cadre. Les cotisations salariales représentent environ 22 à 25% du brut selon le statut et la tranche de salaire."}},{"@type":"Question","name":"Quelle est la différence entre salaire brut et net ?","acceptedAnswer":{"@type":"Answer","text":"Le salaire brut est le montant avant déduction des cotisations sociales salariales. Le salaire net est ce que vous recevez réellement sur votre compte. La différence (22-25%) correspond aux cotisations maladie, retraite, chômage et prévoyance."}},{"@type":"Question","name":"Quel est le SMIC net en 2025 ?","acceptedAnswer":{"@type":"Answer","text":"Le SMIC brut est de 1 801,80 € par mois en 2025. Le SMIC net correspondant est d'environ 1 426 € net par mois après déduction des cotisations salariales."}}]}</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--black:#0a0a0a;--white:#ffffff;--gray:#8a8a8a;--light:#f2f2f2;--acc:#1a4a2a;--acc-bg:#eaf2ec}
+    html,body{background:var(--white);color:var(--black);font-family:'Inter',-apple-system,sans-serif;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 28px;background:rgba(255,255,255,0.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+    .logo{display:flex;align-items:center;gap:7px;text-decoration:none;color:var(--black)}
+    .logo-dot{width:18px;height:18px;background:var(--black);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .logo-dot svg{width:11px;height:11px}
+    .logo-name{font-size:13.5px;font-weight:500;letter-spacing:-0.01em}
+    nav{display:flex;align-items:center;gap:0;flex-wrap:wrap}
+    nav a{font-size:13px;color:var(--black);text-decoration:none;padding:6px 13px;border-radius:7px;transition:background 0.12s}
+    nav a:hover{background:var(--light)}
+    nav a.nav-active{background:var(--black);color:var(--white);border-radius:100px;padding:8px 18px;font-weight:500}
+    nav a.nav-active:hover{background:#282828}
+    main{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:140px 20px 80px}
+    .hero-eyebrow{font-size:13px;color:var(--gray);letter-spacing:0.01em;margin-bottom:12px;text-align:center}
+    .hero-title{font-size:clamp(44px,7vw,96px);font-weight:300;letter-spacing:-0.035em;line-height:1.0;text-align:center;color:var(--black);margin-bottom:52px;user-select:none}
+    .float-wrap{position:relative;width:420px;max-width:calc(100vw - 40px)}
+    .float-card{background:var(--white);border-radius:26px;border:1px solid rgba(0,0,0,0.08);overflow:hidden;box-shadow:0 1px 1px rgba(0,0,0,0.03),0 4px 8px rgba(0,0,0,0.05),0 12px 24px rgba(0,0,0,0.07),0 32px 56px rgba(0,0,0,0.09),0 64px 96px rgba(0,0,0,0.07);animation:levitate 7s ease-in-out infinite;transform-origin:center bottom}
+    @keyframes levitate{0%{transform:translateY(0px) rotateX(0deg)}50%{transform:translateY(-12px) rotateX(1deg)}100%{transform:translateY(0px) rotateX(0deg)}}
+    .card-chrome{display:flex;align-items:center;gap:6px;padding:14px 18px 10px;border-bottom:1px solid rgba(0,0,0,0.05)}
+    .chrome-dot{width:10px;height:10px;border-radius:50%}
+    .d-red{background:#ff5f57}.d-amber{background:#ffbd2e}.d-green{background:#28c840}
+    .chrome-label{font-size:11px;color:#ccc;margin-left:auto;letter-spacing:0.06em;text-transform:uppercase}
+    .card-body{padding:20px}
+    .toggle-row{display:flex;gap:8px;margin-bottom:16px}
+    .toggle-btn{flex:1;background:#f7f7f7;border:1.5px solid #ececec;border-radius:10px;padding:9px 6px;font-size:12px;font-weight:500;font-family:'Inter',sans-serif;color:var(--gray);cursor:pointer;transition:all 0.14s;text-align:center}
+    .toggle-btn.active{background:var(--black);border-color:var(--black);color:var(--white)}
+    .statut-row{display:flex;gap:8px;margin-bottom:16px}
+    .statut-btn{flex:1;background:#f7f7f7;border:1.5px solid #ececec;border-radius:10px;padding:8px 6px;font-size:11.5px;font-weight:500;font-family:'Inter',sans-serif;color:var(--gray);cursor:pointer;transition:all 0.14s;text-align:center}
+    .statut-btn.active{background:var(--black);border-color:var(--black);color:var(--white)}
+    .field{display:flex;flex-direction:column;gap:5px;align-items:center;margin-bottom:14px}
+    .field-lbl{font-size:9px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#c0c0c0;text-align:center}
+    .input-wrap{position:relative;width:100%}
+    .field input{width:100%;background:#f7f7f7;border:1.5px solid #ececec;border-radius:13px;padding:13px 50px 13px 14px;font-size:26px;font-weight:300;font-family:'Inter',sans-serif;color:var(--black);outline:none;text-align:center;transition:border-color 0.14s,background 0.14s;-moz-appearance:textfield}
+    .field input::-webkit-outer-spin-button,.field input::-webkit-inner-spin-button{-webkit-appearance:none}
+    .field input::placeholder{color:#d0d0d0}.field input:focus{border-color:var(--black);background:#fff}
+    .unit-mark{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:13px;font-weight:500;color:#bbb;pointer-events:none}
+    .result-area{background:#f7f7f7;border-radius:16px;padding:16px 18px;margin-bottom:14px;min-height:70px;display:flex;align-items:center;justify-content:center;transition:background 0.25s;text-align:center}
+    .result-area.has-result{background:var(--acc-bg)}
+    .res-idle{font-size:12px;color:#ccc;line-height:1.6;text-align:center}
+    .res-content{width:100%;display:flex;flex-direction:column;align-items:center;gap:6px}
+    .res-main{font-size:42px;font-weight:300;letter-spacing:-0.04em;color:var(--acc);line-height:1}
+    .res-sub-row{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap}
+    .res-pill{font-size:10px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(26,74,42,0.12);color:var(--acc)}
+    .res-secondary{font-size:11px;color:#bbb}
+    .res-formula{font-size:11px;font-style:italic;color:#c8c8c8;text-align:center;margin-top:2px}
+    .calc-btn{width:100%;background:var(--black);color:var(--white);border:none;border-radius:13px;padding:15px;font-size:13.5px;font-weight:500;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.12s,transform 0.1s}
+    .calc-btn:hover{background:#1e1e1e}.calc-btn:active{transform:scale(0.99)}
+    .ground-shadow{width:60%;height:20px;margin:0 auto;background:radial-gradient(ellipse at center,rgba(0,0,0,0.15) 0%,transparent 70%);border-radius:50%;animation:gshadow 7s ease-in-out infinite}
+    @keyframes gshadow{0%{transform:scaleX(1);opacity:0.7}50%{transform:scaleX(0.82);opacity:0.4}100%{transform:scaleX(1);opacity:0.7}}
+    .seo-section{max-width:560px;margin:72px auto 0;padding:0 20px 100px}
+    .seo-intro{text-align:center;margin-bottom:40px}
+    .seo-intro h2{font-size:15px;font-weight:500;color:var(--black);margin-bottom:8px;letter-spacing:-0.01em}
+    .seo-intro p{font-size:13px;color:var(--gray);line-height:1.7}
+    .seo-intro code{font-family:'SF Mono','Fira Code',monospace;font-size:12px;background:var(--light);padding:2px 7px;border-radius:5px;color:var(--black)}
+    .faq{border-top:1px solid #ececec}.faq-item{border-bottom:1px solid #ececec}
+    .faq-q{width:100%;background:none;border:none;display:flex;align-items:center;justify-content:space-between;padding:16px 0;cursor:pointer;font-size:13.5px;font-weight:400;font-family:'Inter',sans-serif;color:var(--black);text-align:left;gap:16px;transition:color 0.12s}
+    .faq-q:hover{color:var(--gray)}
+    .faq-icon{width:16px;height:16px;flex-shrink:0;position:relative;color:var(--gray);transition:transform 0.25s ease}
+    .faq-icon::before,.faq-icon::after{content:'';position:absolute;background:currentColor;border-radius:2px}
+    .faq-icon::before{width:10px;height:1.5px;top:50%;left:50%;transform:translate(-50%,-50%)}
+    .faq-icon::after{width:1.5px;height:10px;top:50%;left:50%;transform:translate(-50%,-50%);transition:opacity 0.25s,transform 0.25s}
+    .faq-item.open .faq-icon{transform:rotate(45deg)}
+    .faq-a{overflow:hidden;max-height:0;transition:max-height 0.35s ease}
+    .faq-item.open .faq-a{max-height:220px}
+    .faq-a p{font-size:13px;color:var(--gray);line-height:1.75;padding-bottom:16px}
+    footer{position:fixed;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:center;padding:16px;pointer-events:none}
+    footer span{font-size:11.5px;color:#d0d0d0}
+    @media(max-width:600px){nav{display:none}.hero-title{font-size:40px;margin-bottom:36px}}
+  </style>
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-dot"><svg viewBox="0 0 11 11" fill="none"><rect x="1" y="1" width="3.5" height="2.2" rx="0.6" fill="white"/><rect x="6.5" y="1" width="3.5" height="2.2" rx="0.6" fill="white"/><rect x="1" y="4.4" width="3.5" height="1.6" rx="0.6" fill="white"/><rect x="6.5" y="4.4" width="3.5" height="1.6" rx="0.6" fill="white"/><rect x="1" y="7.2" width="3.5" height="1.6" rx="0.6" fill="white"/><rect x="6.5" y="7.2" width="3.5" height="1.6" rx="0.6" fill="white"/></svg></div><span class="logo-name">Calculer-Facile</span></a>
+  <nav>
+    <a href="/fr/">Évolution</a>
+    <a href="/fr/tva/">TVA</a>
+    <a href="/fr/remise/">Remise</a>
+    <a href="/fr/imc/">IMC</a>
+    <a href="/fr/credit/">Crédit</a>
+    <a href="/fr/salaire/" class="nav-active">Salaire</a>
+    <a href="/fr/interets/">Intérêts</a>
+    <a href="/fr/carburant/">Carburant</a>
+  </nav>
+</header>
+<main>
+  <p class="hero-eyebrow">Outil gratuit &mdash; résultat immédiat</p>
+  <h1 class="hero-title">Salaire brut / net</h1>
+  <div class="float-wrap">
+    <div class="float-card">
+      <div class="card-chrome"><div class="chrome-dot d-red"></div><div class="chrome-dot d-amber"></div><div class="chrome-dot d-green"></div><span class="chrome-label">calculer-facile.fr</span></div>
+      <div class="card-body">
+        <div class="toggle-row">
+          <button class="toggle-btn active" id="dir-brut">Brut → Net</button>
+          <button class="toggle-btn" id="dir-net">Net → Brut</button>
+        </div>
+        <div class="statut-row">
+          <button class="statut-btn active" id="stat-noncadre">Non-cadre</button>
+          <button class="statut-btn" id="stat-cadre">Cadre</button>
+        </div>
+        <div class="field">
+          <span class="field-lbl" id="input-lbl">Salaire brut mensuel</span>
+          <div class="input-wrap">
+            <input id="salaire" type="number" placeholder="2 500" inputmode="decimal" autofocus />
+            <span class="unit-mark">€</span>
+          </div>
+        </div>
+        <div class="result-area" id="res-area"><p class="res-idle">Entrez un salaire pour calculer.</p></div>
+        <button class="calc-btn" id="calc-btn">Calculer le salaire net</button>
+      </div>
+    </div>
+    <div class="ground-shadow"></div>
+  </div>
+  <section class="seo-section">
+    <div class="seo-intro">
+      <h2>Comment calculer le salaire net à partir du brut ?</h2>
+      <p>En France, les cotisations salariales représentent environ <code>22%</code> pour un non-cadre et <code>25%</code> pour un cadre.<br>Net ≈ Brut × 0,78 (non-cadre) &nbsp;·&nbsp; Net ≈ Brut × 0,75 (cadre)</p>
+    </div>
+    <div class="faq" role="list">
+      <div class="faq-item" role="listitem"><button class="faq-q" aria-expanded="false">Quelle est la différence entre salaire brut et net ?<span class="faq-icon" aria-hidden="true"></span></button><div class="faq-a"><p>Le <strong>salaire brut</strong> est le montant inscrit sur votre contrat. Le <strong>salaire net</strong> est ce que vous recevez réellement après déduction des cotisations sociales salariales (maladie, retraite, chômage, prévoyance). La différence représente environ 22 à 25% du brut.</p></div></div>
+      <div class="faq-item" role="listitem"><button class="faq-q" aria-expanded="false">Quel est le SMIC net en 2025 ?<span class="faq-icon" aria-hidden="true"></span></button><div class="faq-a"><p>En 2025, le SMIC brut est de <strong>1 801,80 €/mois</strong>. Le SMIC net correspondant est d'environ <strong>1 426 €/mois</strong> après déduction des cotisations salariales. Le SMIC horaire brut est de 11,88 €.</p></div></div>
+      <div class="faq-item" role="listitem"><button class="faq-q" aria-expanded="false">Quelle différence entre cadre et non-cadre pour les cotisations ?<span class="faq-icon" aria-hidden="true"></span></button><div class="faq-a"><p>Les cadres cotisent davantage, notamment pour la <strong>retraite complémentaire AGIRC-ARRCO</strong> (taux plus élevé sur la tranche B) et la prévoyance cadre obligatoire. Cela représente environ 2 à 3% de cotisations supplémentaires, d'où un ratio net/brut légèrement inférieur pour les cadres.</p></div></div>
+      <div class="faq-item" role="listitem"><button class="faq-q" aria-expanded="false">Pourquoi mon salaire net est-il différent chaque mois ?<span class="faq-icon" aria-hidden="true"></span></button><div class="faq-a"><p>Plusieurs raisons : heures supplémentaires, prime, absence ou arrêt maladie, régularisation de cotisations, changement de tranche de retraite complémentaire en cours d'année. Le calcul de paie peut également intégrer des remboursements de frais ou avantages en nature.</p></div></div>
+      <div class="faq-item" role="listitem"><button class="faq-q" aria-expanded="false">Quel salaire brut pour un net de 2 000 € ?<span class="faq-icon" aria-hidden="true"></span></button><div class="faq-a"><p>Pour obtenir <strong>2 000 € net</strong>, il faut environ <strong>2 565 € brut</strong> pour un non-cadre (÷ 0,78) ou environ <strong>2 667 € brut</strong> pour un cadre (÷ 0,75). Ces estimations sont des approximations — le calcul exact dépend de votre fiche de paie.</p></div></div>
+    </div>
+  </section>
+</main>
+<footer><span>© 2025 calculer-facile.fr</span></footer>
+<script>
+  const salaireEl=document.getElementById('salaire'),btn=document.getElementById('calc-btn'),area=document.getElementById('res-area'),inputLbl=document.getElementById('input-lbl');
+  const dirBrut=document.getElementById('dir-brut'),dirNet=document.getElementById('dir-net');
+  const statNC=document.getElementById('stat-noncadre'),statC=document.getElementById('stat-cadre');
+  let direction='brut', isCadre=false;
+
+  dirBrut.addEventListener('click',()=>{direction='brut';dirBrut.classList.add('active');dirNet.classList.remove('active');inputLbl.textContent='Salaire brut mensuel';salaireEl.placeholder='2 500';btn.textContent='Calculer le salaire net';reset();});
+  dirNet.addEventListener('click',()=>{direction='net';dirNet.classList.add('active');dirBrut.classList.remove('active');inputLbl.textContent='Salaire net mensuel';salaireEl.placeholder='1 950';btn.textContent='Calculer le salaire brut';reset();});
+  statNC.addEventListener('click',()=>{isCadre=false;statNC.classList.add('active');statC.classList.remove('active');reset();});
+  statC.addEventListener('click',()=>{isCadre=true;statC.classList.add('active');statNC.classList.remove('active');reset();});
+
+  function reset(){salaireEl.value='';area.className='result-area';area.innerHTML='<p class="res-idle">Entrez un salaire pour calculer.</p>';}
+  function fmt(n){return n.toLocaleString('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2});}
+
+  function calc(){
+    const val=parseFloat(salaireEl.value);
+    if(isNaN(val)||val<=0){area.className='result-area';area.innerHTML='<p class="res-idle">Entrez un salaire valide.</p>';return;}
+    const taux=isCadre?0.75:0.78;
+    const statut=isCadre?'Cadre':'Non-cadre';
+    let net,brut,cotis;
+    if(direction==='brut'){
+      brut=val; net=val*taux; cotis=brut-net;
+      area.className='result-area has-result';
+      area.innerHTML=`<div class="res-content"><span class="res-main">${fmt(net)}\u00a0€</span><div class="res-sub-row"><span class="res-pill">Salaire net · ${statut}</span><span class="res-secondary">Cotisations\u00a0: ${fmt(cotis)}\u00a0€</span></div><p class="res-secondary" style="margin-top:2px;">Brut\u00a0: ${fmt(brut)}\u00a0€ &nbsp;·&nbsp; Taux charges\u00a0: ${((1-taux)*100).toFixed(0)}\u00a0%</p><p class="res-formula">${fmt(brut)}\u00a0€ × ${taux} = ${fmt(net)}\u00a0€ net</p></div>`;
+    }else{
+      net=val; brut=val/taux; cotis=brut-net;
+      area.className='result-area has-result';
+      area.innerHTML=`<div class="res-content"><span class="res-main">${fmt(brut)}\u00a0€</span><div class="res-sub-row"><span class="res-pill">Salaire brut · ${statut}</span><span class="res-secondary">Cotisations\u00a0: ${fmt(cotis)}\u00a0€</span></div><p class="res-secondary" style="margin-top:2px;">Net\u00a0: ${fmt(net)}\u00a0€ &nbsp;·&nbsp; Taux charges\u00a0: ${((1-taux)*100).toFixed(0)}\u00a0%</p><p class="res-formula">${fmt(net)}\u00a0€ ÷ ${taux} = ${fmt(brut)}\u00a0€ brut</p></div>`;
+    }
+  }
+  btn.addEventListener('click',calc);
+  salaireEl.addEventListener('keydown',e=>{if(e.key==='Enter')calc();});
+  document.querySelectorAll('.faq-q').forEach(b=>{b.addEventListener('click',()=>{const item=b.parentElement;const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-q').setAttribute('aria-expanded','false');});if(!isOpen){item.classList.add('open');b.setAttribute('aria-expanded','true');}});});
+</script>
+</body>
+</html>
