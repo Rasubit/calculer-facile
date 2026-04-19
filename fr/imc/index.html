@@ -22,6 +22,7 @@
   <meta name="twitter:description" content="IMC instantané — poids et taille suffisent. Gratuit.">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculateur IMC","url":"https://calculer-facile.fr/fr/imc/","description":"Calcule l'indice de masse corporelle (IMC) à partir du poids et de la taille. Indique la catégorie : insuffisance pondérale, poids normal, surpoids ou obésité.","applicationCategory":"HealthApplication","operatingSystem":"Web","inLanguage":"fr","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"publisher":{"@type":"Organization","name":"Calculer-Facile","url":"https://calculer-facile.fr"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Comment calculer son IMC ?","acceptedAnswer":{"@type":"Answer","text":"L'IMC se calcule en divisant le poids (en kg) par le carré de la taille (en mètres). Formule : IMC = poids ÷ (taille × taille). Exemple : 70 kg ÷ (1,75 × 1,75) = 22,9."}},{"@type":"Question","name":"Quel est l'IMC normal pour un adulte ?","acceptedAnswer":{"@type":"Answer","text":"Selon l'OMS : moins de 18,5 = insuffisance pondérale ; 18,5 à 24,9 = poids normal ; 25 à 29,9 = surpoids ; 30 et plus = obésité. Ces seuils s'appliquent aux adultes de 18 à 65 ans."}},{"@type":"Question","name":"L'IMC est-il fiable ?","acceptedAnswer":{"@type":"Answer","text":"L'IMC est un indicateur de référence mais imparfait : il ne distingue pas la masse musculaire de la masse grasse. Un sportif musclé peut avoir un IMC élevé sans surpoids réel. C'est un outil de dépistage, pas un diagnostic médical."}}]}</script>
+  <link rel="icon" type="image/png" href="/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,11 +41,7 @@
     nav a:hover{background:var(--light)}
     nav a.nav-active{background:var(--black);color:var(--white);border-radius:100px;padding:8px 18px;font-weight:500}
     nav a.nav-active:hover{background:#282828}
-    main {
-      display:flex; flex-direction:column;
-      align-items:center; justify-content:flex-start;
-      padding:140px 20px 80px;
-    }
+    main{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 20px 60px}
     .hero-eyebrow{font-size:13px;color:var(--gray);letter-spacing:0.01em;margin-bottom:12px;text-align:center}
     .hero-title{font-size:clamp(54px,9vw,104px);font-weight:300;letter-spacing:-0.035em;line-height:1.0;text-align:center;color:var(--black);margin-bottom:52px;user-select:none}
     .float-wrap{position:relative;width:420px;max-width:calc(100vw - 40px)}
@@ -70,11 +67,7 @@
     .result-area.has-result{background:var(--acc-bg)}
     .res-idle{font-size:12px;color:#ccc;line-height:1.6;text-align:center}
     .res-content{width:100%;display:flex;flex-direction:column;align-items:center;gap:6px}
-    .res-main {
-      display:flex; flex-direction:column;
-      align-items:center; justify-content:flex-start;
-      padding:140px 20px 80px;
-    }
+    .res-main{font-size:52px;font-weight:300;letter-spacing:-0.04em;line-height:1}
     .res-pill{font-size:10px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;padding:3px 12px;border-radius:100px}
     .res-formula{font-size:11px;font-style:italic;color:#c8c8c8;text-align:center;margin-top:2px}
     .imc-scale{width:100%;height:6px;border-radius:100px;background:linear-gradient(to right,#a8d8e0 0%,#a8d8e0 18.5%,#a8d4b8 18.5%,#a8d4b8 25%,#e8d8a0 25%,#e8d8a0 30%,#e8c0a0 30%,#e8c0a0 100%);position:relative;margin-top:4px}
@@ -107,7 +100,16 @@
 <body>
 <header>
   <a class="logo" href="/"><div class="logo-dot"><svg viewBox="0 0 11 11" fill="none"><rect x="1" y="1" width="3.5" height="2.2" rx="0.6" fill="white"/><rect x="6.5" y="1" width="3.5" height="2.2" rx="0.6" fill="white"/><rect x="1" y="4.4" width="3.5" height="1.6" rx="0.6" fill="white"/><rect x="6.5" y="4.4" width="3.5" height="1.6" rx="0.6" fill="white"/><rect x="1" y="7.2" width="3.5" height="1.6" rx="0.6" fill="white"/><rect x="6.5" y="7.2" width="3.5" height="1.6" rx="0.6" fill="white"/></svg></div><span class="logo-name">Calculer-Facile</span></a>
-  <nav><a href="/fr/">Évolution</a><a href="/fr/tva/">TVA</a><a href="/fr/remise/">Remise</a><a href="/fr/imc/" class="nav-active">IMC</a><a href="/fr/credit/">Crédit</a><a href="/fr/carburant/">Carburant</a></nav>
+  <nav>
+    <a href="/fr/">Évolution</a>
+    <a href="/fr/tva/">TVA</a>
+    <a href="/fr/remise/">Remise</a>
+    <a href="/fr/imc/" class="nav-active">IMC</a>
+    <a href="/fr/credit/">Crédit</a>
+    <a href="/fr/salaire/">Salaire</a>
+    <a href="/fr/interets/">Intérêts</a>
+    <a href="/fr/carburant/">Carburant</a>
+  </nav>
 </header>
 <main>
   <p class="hero-eyebrow">Outil gratuit &mdash; résultat immédiat</p>
