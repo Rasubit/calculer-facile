@@ -22,6 +22,7 @@
   <meta name="twitter:description" content="Mensualité de prêt en un clic. Gratuit et immédiat.">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculateur de Mensualité de Crédit","url":"https://calculer-facile.fr/fr/credit/","description":"Simule la mensualité d'un crédit à partir du capital emprunté, du taux d'intérêt annuel et de la durée en mois.","applicationCategory":"FinanceApplication","operatingSystem":"Web","inLanguage":"fr","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"publisher":{"@type":"Organization","name":"Calculer-Facile","url":"https://calculer-facile.fr"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Comment calculer sa mensualité de crédit ?","acceptedAnswer":{"@type":"Answer","text":"La formule est : mensualité = Capital × (taux mensuel × (1 + taux mensuel)^n) / ((1 + taux mensuel)^n - 1). Le taux mensuel = taux annuel ÷ 12. Notre calculateur applique cette formule automatiquement."}},{"@type":"Question","name":"Quel taux pour un crédit immobilier en 2025 ?","acceptedAnswer":{"@type":"Answer","text":"Les taux immobiliers en France oscillent entre 3% et 4% sur 20 ans en 2025, selon le profil de l'emprunteur et l'établissement bancaire. Les taux varient selon la durée : plus la durée est longue, plus le taux est élevé."}},{"@type":"Question","name":"Quelle différence entre TAEG et taux nominal ?","acceptedAnswer":{"@type":"Answer","text":"Le taux nominal est le taux d'intérêt brut. Le TAEG (Taux Annuel Effectif Global) inclut tous les frais : assurance emprunteur, frais de dossier, garanties. C'est le TAEG qui permet de comparer réellement les offres de crédit."}}]}</script>
+  <link rel="icon" type="image/png" href="/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,11 +41,7 @@
     nav a:hover{background:var(--light)}
     nav a.nav-active{background:var(--black);color:var(--white);border-radius:100px;padding:8px 18px;font-weight:500}
     nav a.nav-active:hover{background:#282828}
-    main {
-      display:flex; flex-direction:column;
-      align-items:center; justify-content:flex-start;
-      padding:140px 20px 80px;
-    }
+    main{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 20px 60px}
     .hero-eyebrow{font-size:13px;color:var(--gray);letter-spacing:0.01em;margin-bottom:12px;text-align:center}
     .hero-title{font-size:clamp(44px,7.5vw,96px);font-weight:300;letter-spacing:-0.035em;line-height:1.0;text-align:center;color:var(--black);margin-bottom:52px;user-select:none}
     .float-wrap{position:relative;width:420px;max-width:calc(100vw - 40px)}
@@ -72,11 +69,7 @@
     .result-area.has-result{background:var(--acc-bg)}
     .res-idle{font-size:12px;color:#ccc;line-height:1.6;text-align:center}
     .res-content{width:100%;display:flex;flex-direction:column;align-items:center;gap:6px}
-    .res-main {
-      display:flex; flex-direction:column;
-      align-items:center; justify-content:flex-start;
-      padding:140px 20px 80px;
-    }
+    .res-main{font-size:46px;font-weight:300;letter-spacing:-0.04em;color:var(--acc);line-height:1}
     .res-sub-row{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap}
     .res-pill{font-size:10px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(42,58,106,0.12);color:var(--acc)}
     .res-secondary{font-size:11px;color:#bbb}
@@ -109,7 +102,16 @@
 <body>
 <header>
   <a class="logo" href="/"><div class="logo-dot"><svg viewBox="0 0 11 11" fill="none"><rect x="1" y="1" width="3.5" height="2.2" rx="0.6" fill="white"/><rect x="6.5" y="1" width="3.5" height="2.2" rx="0.6" fill="white"/><rect x="1" y="4.4" width="3.5" height="1.6" rx="0.6" fill="white"/><rect x="6.5" y="4.4" width="3.5" height="1.6" rx="0.6" fill="white"/><rect x="1" y="7.2" width="3.5" height="1.6" rx="0.6" fill="white"/><rect x="6.5" y="7.2" width="3.5" height="1.6" rx="0.6" fill="white"/></svg></div><span class="logo-name">Calculer-Facile</span></a>
-  <nav><a href="/fr/">Évolution</a><a href="/fr/tva/">TVA</a><a href="/fr/remise/">Remise</a><a href="/fr/imc/">IMC</a><a href="/fr/credit/" class="nav-active">Crédit</a><a href="/fr/carburant/">Carburant</a></nav>
+  <nav>
+    <a href="/fr/">Évolution</a>
+    <a href="/fr/tva/">TVA</a>
+    <a href="/fr/remise/">Remise</a>
+    <a href="/fr/imc/">IMC</a>
+    <a href="/fr/credit/" class="nav-active">Crédit</a>
+    <a href="/fr/salaire/">Salaire</a>
+    <a href="/fr/interets/">Intérêts</a>
+    <a href="/fr/carburant/">Carburant</a>
+  </nav>
 </header>
 <main>
   <p class="hero-eyebrow">Outil gratuit &mdash; résultat immédiat</p>
